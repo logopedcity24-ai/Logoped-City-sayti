@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF0080" />
+      <stop offset="100%" stop-color="#EC008C" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E640" />
+      <stop offset="100%" stop-color="#00A84F" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background container with organic wavy corners -->
+  <rect width="400" height="400" rx="48" fill="#FFFFFF" />
+
+  <!-- Top-left pink curved corner background -->
+  <path d="M 0,0 L 160,0 C 160,80 120,150 0,160 Z" fill="url(#pinkGrad)" />
+
+  <!-- Bottom-right green curved corner background -->
+  <path d="M 400,400 L 240,400 C 240,320 280,250 400,240 Z" fill="url(#greenGrad)" />
+
+  <!-- Center Pink Emblem Icon -->
+  <!-- Head circle -->
+  <circle cx="200" cy="125" r="28" fill="#EC008C" />
+
+  <!-- Left quotation/arm shape -->
+  <path
+    d="M 188,162 
+       H 136 
+       C 120,162 110,172 110,188 
+       V 245 
+       C 110,258 116,268 126,268 
+       C 134,268 140,262 144,254 
+       C 155,236 168,226 188,226 
+       V 162 Z"
+    fill="#EC008C"
+  />
+
+  <!-- Right quotation/arm shape (Mirrored) -->
+  <path
+    d="M 212,162 
+       H 264 
+       C 280,162 290,172 290,188 
+       V 245 
+       C 290,258 284,268 274,268 
+       C 266,268 260,262 256,254 
+       C 245,236 232,226 212,226 
+       V 162 Z"
+    fill="#EC008C"
+  />
+
+  <!-- "LOGOPED CITY" Text in bold green -->
+  <text
+    x="200"
+    y="335"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+    font-weight="900"
+    font-size="34"
+    letter-spacing="1.5"
+    fill="#009933"
+  >LOGOPED CITY</text>
+</svg>

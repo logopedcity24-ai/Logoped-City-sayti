@@ -1,0 +1,6 @@
+{
+  "name": "Logoped City - Bolalar Nutqi va Rivojlanish Markazi",
+  "description": "Xorazm viloyatidagi Logoped City bolalar nutqi va rivojlanish markazining rasmiy veb-sayti. Urganch, Xiva, Qo'shko'pir va Xonqa filiallari.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
