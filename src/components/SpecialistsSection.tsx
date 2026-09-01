@@ -26,53 +26,65 @@ export const SpecialistsSection: React.FC<SpecialistsSectionProps> = ({ onOpenCo
         </div>
 
         {/* Specialists Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-12">
           {SPECIALISTS.map((spec) => (
             <div
               key={spec.id}
-              className="bg-slate-50/70 rounded-3xl p-6 border border-slate-200/80 hover:border-emerald-300 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+              className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                {/* Avatar & Basic Info */}
-                <div className="flex items-start space-x-4 mb-4">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-bold text-xl shrink-0 shadow-xs ${spec.avatarBg}`}>
-                    {spec.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-slate-900 text-lg">
-                      {spec.name}
-                    </h3>
-                    <p className="text-xs font-bold text-emerald-700">
-                      {spec.role}
-                    </p>
-                    <div className="flex items-center text-[11px] text-slate-500 mt-1">
-                      <MapPin className="w-3 h-3 mr-1 text-slate-400" />
-                      <span>{spec.branch}</span>
+                {/* Specialist Photo */}
+                <div className="relative mb-4 flex justify-center">
+                  {spec.photoUrl ? (
+                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden shadow-md border-2 border-white ring-4 ring-emerald-50/80 group-hover:ring-emerald-200 transition-all">
+                      <img
+                        src={spec.photoUrl}
+                        alt={spec.name}
+                        className="w-full h-full object-cover object-top"
+                      />
                     </div>
+                  ) : (
+                    <div className={`w-28 h-28 sm:w-32 sm:h-32 rounded-3xl flex items-center justify-center font-bold text-3xl shadow-md ${spec.avatarBg}`}>
+                      {spec.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                  )}
+                </div>
+
+                {/* Name & Role */}
+                <div className="text-center mb-4">
+                  <h3 className="font-heading font-black text-slate-900 text-base sm:text-lg leading-snug">
+                    {spec.name}
+                  </h3>
+                  <p className="text-xs font-bold text-emerald-700 mt-1">
+                    {spec.role}
+                  </p>
+                  <div className="flex items-center justify-center text-[11px] text-slate-500 mt-1">
+                    <MapPin className="w-3 h-3 mr-1 text-emerald-600" />
+                    <span>{spec.branch}</span>
                   </div>
                 </div>
 
                 {/* Experience & Education */}
-                <div className="space-y-2 py-3 border-y border-slate-200/60 text-xs text-slate-700">
-                  <div className="flex items-center space-x-2">
-                    <Award className="w-4 h-4 text-emerald-600 shrink-0" />
+                <div className="space-y-2 py-3 border-y border-slate-100 text-xs text-slate-700">
+                  <div className="flex items-start space-x-2">
+                    <Award className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                     <span className="font-medium">{spec.experience}</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <GraduationCap className="w-4 h-4 text-teal-600 shrink-0" />
+                  <div className="flex items-start space-x-2">
+                    <GraduationCap className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
                     <span>{spec.education}</span>
                   </div>
                 </div>
 
                 {/* Specialization Chips */}
                 <div className="pt-3">
-                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
                     Asosiy yo‘nalishlari:
                   </div>
-                  <div className="space-y-1">
+                  <div className="space-y-1.5">
                     {spec.specialization.map((item, idx) => (
-                      <div key={idx} className="flex items-center space-x-1.5 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                      <div key={idx} className="flex items-start space-x-1.5 text-xs text-slate-700 leading-snug">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -81,10 +93,10 @@ export const SpecialistsSection: React.FC<SpecialistsSectionProps> = ({ onOpenCo
               </div>
 
               {/* Consultation button */}
-              <div className="pt-4 border-t border-slate-200/60 mt-4">
+              <div className="pt-4 border-t border-slate-100 mt-4">
                 <button
                   onClick={() => onOpenConsultationModal(undefined, spec.name)}
-                  className="w-full py-2.5 rounded-xl bg-white hover:bg-emerald-600 hover:text-white text-slate-800 font-bold text-xs border border-slate-200 hover:border-emerald-600 transition-colors shadow-xs"
+                  className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-bold text-xs transition-colors shadow-xs"
                 >
                   Konsultatsiyaga yozilish
                 </button>

@@ -92,8 +92,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="pr-8 flex items-start space-x-3">
-              <div className="w-10 h-10 rounded-2xl bg-pink-50 border border-pink-100 flex items-center justify-center shrink-0 p-1">
-                <LogoEmblem className="w-full h-full" color="#EC008C" />
+              <div className="w-11 h-11 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-center shrink-0 p-0.5 overflow-hidden">
+                <LogoEmblem className="w-full h-full rounded-xl" />
               </div>
               <div>
                 <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold mb-0.5">

@@ -49,6 +49,7 @@ export interface Specialist {
   specialization: string[];
   avatarBg: string;
   gender: 'female' | 'male';
+  photoUrl?: string;
 }
 
 export interface Course {

@@ -96,8 +96,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultationModal }) => {
                 <div className="relative -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 p-6 bg-gradient-to-r from-pink-500/10 via-white to-emerald-500/10 border-b border-slate-100 flex items-center justify-between">
                   <div className="flex items-center space-x-3.5">
                     {/* Official Emblem */}
-                    <div className="relative w-12 h-12 rounded-2xl bg-white shadow-md border border-pink-100 flex items-center justify-center p-1.5 shrink-0">
-                      <LogoEmblem className="w-full h-full" color="#EC008C" />
+                    <div className="relative w-13 h-13 rounded-2xl bg-white shadow-sm border border-slate-200/80 flex items-center justify-center p-0.5 shrink-0 overflow-hidden">
+                      <LogoEmblem className="w-full h-full rounded-xl" />
                     </div>
                     <div>
                       <h2 className="font-heading font-black text-lg tracking-tight text-[#009933] uppercase">
@@ -186,8 +186,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultationModal }) => {
 
               {/* Floating decorative badge with brand logo styling */}
               <div className="hidden sm:flex absolute -bottom-5 -left-6 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl items-center space-x-3 z-20 border border-slate-800">
-                <div className="w-8 h-8 rounded-xl bg-[#EC008C]/20 border border-[#EC008C]/40 flex items-center justify-center shrink-0">
-                  <LogoEmblem className="w-5 h-5" color="#EC008C" />
+                <div className="w-8 h-8 rounded-xl bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden">
+                  <LogoEmblem className="w-full h-full rounded-lg" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs font-bold">Har bir bolaga</div>

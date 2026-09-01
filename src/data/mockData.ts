@@ -362,70 +362,106 @@ export const CHILD_NEEDS: ChildNeedItem[] = [
 
 export const SPECIALISTS: Specialist[] = [
   {
-    id: 'spec-1',
-    name: 'Dilnoza Matyoqubova',
-    role: 'Bosh logoped-defektolog',
-    experience: '8 yillik pedagogik tajriba',
-    education: 'Oliy ma’lumotli defektolog, amaliyotchi mutaxassis',
-    branch: 'Urganch filiali',
-    specialization: ['Artikulyatsion massaj', 'ZRR va dizartriya korreksiyasi', 'Nutq tovushlarini qo‘yish'],
+    id: 'spec-aziza',
+    name: 'Atajanova Aziza Baxtiyarovna',
+    role: 'Logoped City Kuratori, Defektolog, ABA Terapevt',
+    experience: 'Katta amaliy va kuratorlik tajribasi',
+    education: 'VB-MAPP va amaliy xulq-atvor tahlili (ABA) bo‘yicha mutaxassis',
+    branch: 'Barcha filiallar kuratori',
+    specialization: [
+      'VB-MAPP baholash va individual rivojlanish rejasi',
+      'Defektologik va nutqiy korreksiya',
+      'ABA terapiya (Amaliy xulq-atvor tahlili)',
+      'Pedagogik dasturlarni ishlab chiqish va nazorat'
+    ],
     avatarBg: 'bg-emerald-100 text-emerald-800',
-    gender: 'female'
+    gender: 'female',
+    photoUrl: '/specialists/aziza-atajanova.png'
   },
   {
-    id: 'spec-2',
-    name: 'Jasurbek Raximov',
-    role: 'Sensor integratsiya va AFK instruktori',
-    experience: '6 yillik amaliy tajriba',
-    education: 'Jismoniy madaniyat va moslashtirilgan pedagogika',
-    branch: 'Qo‘shko‘pir filiali',
-    specialization: ['Sensor integratsiya zali', 'Muvozanat va koordinatsiya', 'CBO amaliyoti'],
+    id: 'spec-shoira',
+    name: 'Sultonova Shoira',
+    role: 'Logoped, ABA Terapevt',
+    experience: 'Malakali amaliyotchi mutaxassis',
+    education: 'Korreksion pedagogika, logopediya va ABA terapiya',
+    branch: 'Logoped City filiali',
+    specialization: [
+      'Autizm (RAS), ZPR, ZRR korreksiyasi',
+      'Alaliya, Afaziya, Dizartriya, Dispraksiya',
+      'Duduqlanish va nutq nuqsonlarini bartaraf etish',
+      'Logopedik massaj va zondlar bilan mashg‘ulotlar'
+    ],
     avatarBg: 'bg-teal-100 text-teal-800',
-    gender: 'male'
+    gender: 'female',
+    photoUrl: '/specialists/shoira-sultonova.png'
   },
   {
-    id: 'spec-3',
-    name: 'Mohira Otajonova',
-    role: 'ABA terapiya mutaxassisi',
-    experience: '5 yillik ixtisoslashgan tajriba',
-    education: 'Amaliy xulq-atvor tahlili (ABA) bo‘yicha sertifikatlangan',
-    branch: 'Xiva filiali',
-    specialization: ['Ijtimoiy muloqotni rivojlantirish', 'Xulq-atvor korreksiyasi', 'Autizm spektri ko‘mak'],
-    avatarBg: 'bg-fuchsia-100 text-fuchsia-800',
-    gender: 'female'
-  },
-  {
-    id: 'spec-4',
-    name: 'Ziyoda Xudoyberganova',
-    role: 'Logoped va logoritmika o‘qituvchisi',
-    experience: '5 yillik amaliy tajriba',
-    education: 'Pedagogika universiteti maxsus fakulteti',
-    branch: 'Xonqa filiali',
-    specialization: ['Logoritmika mashg‘ulotlari', 'Fonematik eshitish', 'Bog‘lanishli nutq'],
-    avatarBg: 'bg-emerald-100 text-emerald-800',
-    gender: 'female'
-  },
-  {
-    id: 'spec-5',
-    name: 'Shahnoza Ibragimova',
-    role: 'Bolalar psixologi va art-terapevt',
-    experience: '7 yillik amaliy tajriba',
-    education: 'Amaliy psixologiya va bolalar rivojlanishi',
-    branch: 'Urganch filiali',
-    specialization: ['Art-terapiya', 'Hissiy zo‘riqishni bartaraf etish', 'Ota-onalar bilan ishlash'],
+    id: 'spec-sojida',
+    name: 'Palvanova Sojida',
+    role: 'Pedagog-Defektolog, Logoped',
+    experience: 'Katta amaliy korreksion tajriba',
+    education: 'Oliy ma’lumotli defektolog va logoped mutaxassisi',
+    branch: 'Logoped City filiali',
+    specialization: [
+      'Duduqlanish, Dislaliya, Alaliya, Rinolaliya',
+      'Autizm, ZPR, ZRR tashxisli bolalar korreksiyasi',
+      'Aqliy va nutqiy qobiliyatlarni rivojlantirish',
+      'Turli xil zamonaviy metodikalar orqali o‘qitish'
+    ],
     avatarBg: 'bg-pink-100 text-pink-800',
-    gender: 'female'
+    gender: 'female',
+    photoUrl: '/specialists/sojida-palvanova.png'
   },
   {
-    id: 'spec-6',
-    name: 'Nigora Bobojonova',
-    role: 'Defektolog va erta rivojlantirish mutaxassisi',
-    experience: '6 yillik amaliy tajriba',
-    education: 'Korreksion pedagogika va defektologiya',
-    branch: 'Qo‘shko‘pir filiali',
-    specialization: ['ZPR va aqliy rivojlanish', 'Diqqat va xotira mashqlari', 'Kognitiv ko‘nikmalar'],
-    avatarBg: 'bg-teal-100 text-teal-800',
-    gender: 'female'
+    id: 'spec-dilnura',
+    name: 'Olimova Dilnura Raximberganovna',
+    role: 'Defektolog-Logoped',
+    experience: 'Amaliyotchi defektolog-logoped',
+    education: 'Korreksion pedagogika va logopediya',
+    branch: 'Logoped City filiali',
+    specialization: [
+      'Duduqlanish, Dislaliya, Alaliya, Rinolaliya',
+      'Autizm, ZPR, ZRR diagnozli bolalar bilan ishlash',
+      'Individual yondashuv asosida korreksiya',
+      'Natijaga yo‘naltirilgan nutqiy mashg‘ulotlar'
+    ],
+    avatarBg: 'bg-emerald-100 text-emerald-800',
+    gender: 'female',
+    photoUrl: '/specialists/dilnura-olimova.png'
+  },
+  {
+    id: 'spec-qunduz',
+    name: 'Abdrimova Qunduz',
+    role: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    experience: 'Malakali ABA mutaxassisi',
+    education: 'Amaliy xulq-atvor tahlili (ABA) va bolalar rivojlanishi',
+    branch: 'Logoped City filiali',
+    specialization: [
+      'Autizm, ZPR va RAS tashxisli bolalar bilan ishlash',
+      'Nutq va rivojlanishdagi kechikishlarni korreksiya qilish',
+      'Xulq-atvor tahlili va ijtimoiy muloqot',
+      'Mustaqil hayotiy ko‘nikmalarni shakllantirish'
+    ],
+    avatarBg: 'bg-fuchsia-100 text-fuchsia-800',
+    gender: 'female',
+    photoUrl: '/specialists/qunduz-abdrimova.png'
+  },
+  {
+    id: 'spec-dildora',
+    name: 'Sultonzarova Dildora',
+    role: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    experience: 'Malakali ABA terapevt',
+    education: 'Korreksion pedagogika va xulq-atvor tahlili',
+    branch: 'Logoped City filiali',
+    specialization: [
+      'Autizm (RAS), ZPR tashxislari bo‘yicha ABA terapiya',
+      'Nutq va kognitiv rivojlanishda kechikishlarni bartaraf etish',
+      'Ijobiy motivatsiya va moslashuv ko‘nikmalari',
+      'O‘yin terapiyasi va ijtimoiy integratsiya'
+    ],
+    avatarBg: 'bg-pink-100 text-pink-800',
+    gender: 'female',
+    photoUrl: '/specialists/dildora-sultonzarova.png'
   }
 ];
 
