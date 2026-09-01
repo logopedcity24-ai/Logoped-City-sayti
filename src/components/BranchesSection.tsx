@@ -180,7 +180,7 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
             </div>
 
             {/* Right: Interactive Maps & Social Card */}
-            <div className="md:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 text-white space-y-5">
+            <div className="md:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 text-white space-y-4">
               <div className="flex items-center justify-between">
                 <h4 className="font-heading font-bold text-base text-emerald-400">
                   {language === 'uz' ? 'Xaritada ko‘rish' : 'Посмотреть на карте'}
@@ -188,19 +188,28 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
                 <Compass className="w-5 h-5 text-slate-400" />
               </div>
 
-              <p className="text-xs text-slate-300 leading-relaxed">
-                {language === 'uz' 
-                  ? 'Manzilni o‘zingizga qulay onlayn xaritalar orqali oching va yo‘nalish (marshrut) chizing:'
-                  : 'Откройте адрес на онлайн карте и проложите удобный маршрут:'}
-              </p>
+              {/* Live Interactive Yandex Map Widget */}
+              {selectedBranch.coords && (
+                <div className="relative w-full h-44 rounded-xl overflow-hidden border border-slate-700 shadow-inner">
+                  <iframe
+                    src={`https://yandex.uz/map-widget/v1/?ll=${selectedBranch.coords.lng}%2C${selectedBranch.coords.lat}&z=16&pt=${selectedBranch.coords.lng}%2C${selectedBranch.coords.lat},pm2rdm`}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    title={branchName}
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+              )}
 
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 {/* Yandex Navigator / Direct Route button */}
                 <a
                   href={selectedBranch.yandexNaviUrl || selectedBranch.yandexMapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-red-500/20 hover:from-amber-500/30 hover:to-red-500/30 border border-amber-400/40 text-xs font-bold text-amber-200 transition-all shadow-xs group"
+                  className="w-full flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-amber-500/20 to-red-500/20 hover:from-amber-500/30 hover:to-red-500/30 border border-amber-400/40 text-xs font-bold text-amber-200 transition-all shadow-xs group"
                 >
                   <span className="flex items-center">
                     <Navigation className="w-4 h-4 mr-2 text-amber-400 group-hover:rotate-12 transition-transform" />
@@ -211,31 +220,27 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
                   </span>
                 </a>
 
-                <a
-                  href={selectedBranch.yandexMapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between p-3 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold transition-colors"
-                >
-                  <span className="flex items-center">
-                    <MapPin className="w-4 h-4 mr-2 text-yellow-400" />
-                    {t.branches.yandexMapBtn}
-                  </span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-                </a>
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href={selectedBranch.yandexMapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold transition-colors"
+                  >
+                    <MapPin className="w-3.5 h-3.5 mr-1.5 text-yellow-400 shrink-0" />
+                    <span className="truncate">Yandex Xarita</span>
+                  </a>
 
-                <a
-                  href={selectedBranch.mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between p-3 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold transition-colors"
-                >
-                  <span className="flex items-center">
-                    <MapPin className="w-4 h-4 mr-2 text-emerald-400" />
-                    {t.branches.googleMapBtn}
-                  </span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-                </a>
+                  <a
+                    href={selectedBranch.mapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold transition-colors"
+                  >
+                    <MapPin className="w-3.5 h-3.5 mr-1.5 text-emerald-400 shrink-0" />
+                    <span className="truncate">Google Maps</span>
+                  </a>
+                </div>
               </div>
 
               {/* Social Channels */}
