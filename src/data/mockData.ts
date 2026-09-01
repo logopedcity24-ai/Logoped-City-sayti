@@ -470,7 +470,7 @@ export const COURSES: Course[] = [
     id: 'boshlangich-logopediya',
     title: 'Boshlang‘ich Logopediya Asoslari',
     targetAudience: 'Yosh mutaxassislar, bog‘cha tarbiyachilari va yangi boshlovchilar uchun',
-    duration: '1 oy (haftada 3 kun, 2 soatdan)',
+    duration: '2 oy (haftada 3 kun, 2 soatdan)',
     format: 'Nazariya + Markaz filiallarida jonli amaliyot',
     description: 'Nutq apparati anatomiyasi, asosiy tovush buzilishlari turlari, artikulyatsion gimnastika va oddiy tovushlarni qo‘yish usullari.',
     topics: [
@@ -484,9 +484,9 @@ export const COURSES: Course[] = [
   },
   {
     id: 'maxsus-logopediya',
-    title: 'Maxsus Logopediya va Dizartriya Korreksiyasi',
+    title: 'Maxsus Logopediya va Korreksiyasi',
     targetAudience: 'Amaliyotchi logoped va defektologlar uchun',
-    duration: '1.5 oy (haftada 3 kun)',
+    duration: '2 oy (haftada 3 kun)',
     format: 'Chuqurlashtirilgan amaliy seminar va master-klasslar',
     description: 'Murakkab nutq buzilishlari (dizartriya, motor alaliya, rinolaliya, duduqlanish) bilan ishlash va logopedik zondlar yordamida massaj.',
     topics: [
@@ -502,7 +502,7 @@ export const COURSES: Course[] = [
     id: 'defektologiya-amaliyoti',
     title: 'Amaliy Defektologiya va Kognitiv Rivojlanish',
     targetAudience: 'Defektologlar, maxsus maktab va DMTT xodimlari',
-    duration: '1 oy',
+    duration: '2 oy',
     format: 'Interaktiv mashg‘ulotlar + keyslar tahlili',
     description: 'Psixik rivojlanishi orqada qolayotgan bolalar bilan ishlash, bilish jarayonlarini diagnostika qilish va o‘quv motivatsiyasini shakllantirish.',
     topics: [
