@@ -4,17 +4,24 @@ export const BRANCHES: Branch[] = [
   {
     id: 'urganch',
     name: 'Urganch filiali',
+    nameRu: 'Ургенчский филиал',
     city: 'Urganch shahri',
+    cityRu: 'город Ургенч',
     address: 'O‘zbekiston ko‘chasi, 49-uy',
+    addressRu: 'ул. Узбекистан, дом 49',
     landmark: 'Al-Xorazmiy diagnostika markazi, 2-qavat',
+    landmarkRu: 'Диагностический центр Аль-Хорезми, 2 этаж',
     phone: '+998 99 221 00 06',
     phoneRaw: '+998992210006',
     instagram: 'https://instagram.com/logoped_city_urganch',
     telegram: 'https://t.me/logoped_city_admin',
     mapUrl: 'https://maps.google.com/?q=Urganch+Ozbekiston+kochasi+49',
     yandexMapUrl: 'https://yandex.uz/maps/?text=Urganch+Ozbekiston+kochasi+49',
+    yandexNaviUrl: 'https://yandex.uz/maps/?rtext=~41.5545,60.6315&rtt=auto',
+    coords: { lat: 41.5545, lng: 60.6315 },
     hasCBO: false,
     workHours: 'Du - Sha: 09:00 - 18:00 (Yakshanba: Dam olish kuni)',
+    workHoursRu: 'Пн - Сб: 09:00 - 18:00 (Воскресенье: выходной)',
     features: [
       'Logopediya va defektologiya xonalari',
       'Sensor integratsiya zali',
@@ -22,44 +29,71 @@ export const BRANCHES: Branch[] = [
       'Art va musiqa terapiyasi burchagi',
       'Keng va shinam kutish zali'
     ],
+    featuresRu: [
+      'Кабинеты логопедии и дефектологии',
+      'Зал сенсорной интеграции',
+      'Кабинеты АВА-терапии',
+      'Уголок арт- и музыкотерапии',
+      'Просторный и удобный зал ожидания'
+    ],
     imagePlaceholderColor: 'from-emerald-500 to-teal-700'
   },
   {
     id: 'xiva',
     name: 'Xiva filiali',
+    nameRu: 'Хивинский филиал',
     city: 'Xiva shahri',
+    cityRu: 'город Хива',
     address: 'Humonur gipermarketi yon tomoni',
+    addressRu: 'Рядом с гипермаркетом Humonur',
     landmark: 'Humonur gipermarketi yoni',
+    landmarkRu: 'Рядом с гипермаркетом Humonur',
     phone: '+998 50 785 00 09',
     phoneRaw: '+998507850009',
     instagram: 'https://instagram.com/logoped_city_xiva',
     telegram: 'https://t.me/logoped_city_admin',
     mapUrl: 'https://maps.google.com/?q=Xiva+Humonur+gipermarketi',
     yandexMapUrl: 'https://yandex.uz/maps/?text=Xiva+Humonur',
+    yandexNaviUrl: 'https://yandex.uz/maps/?rtext=~41.3850,60.3600&rtt=auto',
+    coords: { lat: 41.3850, lng: 60.3600 },
     hasCBO: false,
     workHours: 'Du - Sha: 09:00 - 18:00 (Yakshanba: Dam olish kuni)',
+    workHoursRu: 'Пн - Сб: 09:00 - 18:00 (Воскресенье: выходной)',
     features: [
       'Individual logopedik xonalar',
       'Sensor integratsiya jihozlari',
       'Defektologik rivojlantirish vositalari',
       'Ota-onalar uchun qulay kutish zonasi'
     ],
+    featuresRu: [
+      'Индивидуальные логопедические кабинеты',
+      'Оборудование сенсорной интеграции',
+      'Дефектологические развивающие пособия',
+      'Удобная зона ожидания для родителей'
+    ],
     imagePlaceholderColor: 'from-teal-600 to-emerald-800'
   },
   {
     id: 'qoshkopir',
     name: 'Qo‘shko‘pir filiali',
+    nameRu: 'Филиал Кошкупыр',
     city: 'Qo‘shko‘pir tumani',
+    cityRu: 'Кошкупырский район',
     address: 'Baraka Avto binosi, 2-qavat',
+    addressRu: 'Здание Baraka Avto, 2 этаж',
     landmark: 'Iqbol Shifo sanatoriyasi ro‘parasi',
+    landmarkRu: 'Напротив санатория Iqbol Shifo',
     phone: '+998 50 785 00 06',
     phoneRaw: '+998507850006',
     instagram: 'https://instagram.com/logoped_city_qoshkopir',
     telegram: 'https://t.me/logoped_city_admin',
     mapUrl: 'https://maps.google.com/?q=Qoshkopir+Iqbol+Shifo',
     yandexMapUrl: 'https://yandex.uz/maps/?text=Qoshkopir+Baraka+Avto',
+    yandexNaviUrl: 'https://yandex.uz/maps/?rtext=~41.5330,60.3450&rtt=auto',
+    coords: { lat: 41.5330, lng: 60.3450 },
     hasCBO: true, // ONLY in Qo'shko'pir!
     workHours: 'Du - Sha: 09:00 - 18:00 (Yakshanba: Dam olish kuni)',
+    workHoursRu: 'Пн - Сб: 09:00 - 18:00 (Воскресенье: выходной)',
     features: [
       'MAXSUS CBO XONASI (Kundalik hayot ko‘nikmalari xonasi)',
       'Sensor integratsiya majmuasi',
@@ -67,27 +101,47 @@ export const BRANCHES: Branch[] = [
       'AFK va harakat korreksiyasi zali',
       'ABA terapiya amaliyot xonasi'
     ],
+    featuresRu: [
+      'СПЕЦИАЛЬНАЯ КОМНАТА СБО (Социально-бытовая ориентировка)',
+      'Комплекс сенсорной интеграции',
+      'Кабинет логопедии и артикуляции',
+      'Зал АФК и двигательной коррекции',
+      'Практический кабинет АВА-терапии'
+    ],
     imagePlaceholderColor: 'from-fuchsia-600 to-emerald-700'
   },
   {
     id: 'xonqa',
     name: 'Xonqa filiali',
+    nameRu: 'Ханкинский филиал',
     city: 'Xonqa tumani',
+    cityRu: 'Ханкинский район',
     address: 'Uchpaxta, Oybek–Umrbek kafesi binosi, 1-qavat',
+    addressRu: 'Учпахта, здание кафе Ойбек-Умрбек, 1 этаж',
     landmark: 'Oybek–Umrbek kafesi binosi, 1-qavat',
+    landmarkRu: 'Здание кафе Ойбек-Умрбек, 1 этаж',
     phone: '+998 50 785 00 04',
     phoneRaw: '+998507850004',
     instagram: 'https://instagram.com/logoped_city_xonqa',
     telegram: 'https://t.me/logoped_city_admin',
     mapUrl: 'https://maps.google.com/?q=Xonqa+Uchpaxta',
     yandexMapUrl: 'https://yandex.uz/maps/?text=Xonqa+Uchpaxta',
+    yandexNaviUrl: 'https://yandex.uz/maps/?rtext=~41.4780,60.7750&rtt=auto',
+    coords: { lat: 41.4780, lng: 60.7750 },
     hasCBO: false,
     workHours: 'Du - Sha: 09:00 - 18:00 (Yakshanba: Dam olish kuni)',
+    workHoursRu: 'Пн - Сб: 09:00 - 18:00 (Воскресенье: выходной)',
     features: [
       '1-qavatda qulay joylashuv',
       'Logopediya va defektologiya xonalari',
       'Sensor integratsiya maydonchasi',
       'Logoritmika va o‘yin terapiyasi'
+    ],
+    featuresRu: [
+      'Удобное расположение на 1 этаже',
+      'Кабинеты логопедии и дефектологии',
+      'Площадка сенсорной интеграции',
+      'Логоритмика и игровая терапия'
     ],
     imagePlaceholderColor: 'from-emerald-600 to-teal-900'
   }

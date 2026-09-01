@@ -1,4 +1,4 @@
-﻿export interface QuizQuestion {
+export interface QuizQuestion {
   id: string;
   questionUz: string;
   questionRu: string;
@@ -155,6 +155,7 @@ export const TRANSLATIONS = {
       workHoursLabel: 'Ish vaqti:',
       featuresLabel: 'Filial imkoniyatlari:',
       callBranchBtn: 'Qo‘ng‘iroq qilish',
+      yandexNaviBtn: 'Yandex Navigator (Marshrut)',
       yandexMapBtn: 'Yandeks Xarita',
       googleMapBtn: 'Google Xarita',
       bookBranchBtn: 'Ushbu filialga yozilish',
@@ -314,6 +315,7 @@ export const TRANSLATIONS = {
       workHoursLabel: 'Режим работы:',
       featuresLabel: 'Оснащение филиала:',
       callBranchBtn: 'Позвонить',
+      yandexNaviBtn: 'Яндекс Навигатор (Маршрут)',
       yandexMapBtn: 'Яндекс Карты',
       googleMapBtn: 'Google Карты',
       bookBranchBtn: 'Записаться в этот филиал',

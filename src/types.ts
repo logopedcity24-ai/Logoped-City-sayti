@@ -14,6 +14,8 @@ export interface Branch {
   telegram?: string;
   mapUrl: string;
   yandexMapUrl: string;
+  yandexNaviUrl?: string;
+  coords?: { lat: number; lng: number };
   hasCBO: boolean;
   workHours: string;
   workHoursRu?: string;

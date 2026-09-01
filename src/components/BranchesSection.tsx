@@ -195,6 +195,22 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
               </p>
 
               <div className="space-y-2.5">
+                {/* Yandex Navigator / Direct Route button */}
+                <a
+                  href={selectedBranch.yandexNaviUrl || selectedBranch.yandexMapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-red-500/20 hover:from-amber-500/30 hover:to-red-500/30 border border-amber-400/40 text-xs font-bold text-amber-200 transition-all shadow-xs group"
+                >
+                  <span className="flex items-center">
+                    <Navigation className="w-4 h-4 mr-2 text-amber-400 group-hover:rotate-12 transition-transform" />
+                    <span>{t.branches.yandexNaviBtn || 'Yandex Navigator (Marshrut)'}</span>
+                  </span>
+                  <span className="text-[10px] uppercase font-bold bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded-md border border-amber-400/30">
+                    {language === 'uz' ? 'Marshrut' : 'Маршрут'}
+                  </span>
+                </a>
+
                 <a
                   href={selectedBranch.yandexMapUrl}
                   target="_blank"
