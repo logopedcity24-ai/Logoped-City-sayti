@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { SERVICES } from '../data/mockData';
 import { ServiceItem } from '../types';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 import { 
   MessageSquareText, 
   Brain, 
@@ -24,6 +26,8 @@ interface ServicesSectionProps {
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsultationModal }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedServiceForModal, setSelectedServiceForModal] = useState<ServiceItem | null>(null);
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language];
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -41,10 +45,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
   };
 
   const categories = [
-    { id: 'all', label: 'Barcha xizmatlar (9 ta)' },
-    { id: 'speech', label: 'Nutq va Til' },
-    { id: 'behavior_sensory', label: 'Xulq va Sensor' },
-    { id: 'motor_life', label: 'Harakat va Hayotiy Ko‘nikma' },
+    { id: 'all', label: t.services.allTab },
+    { id: 'speech', label: t.services.speechTab },
+    { id: 'behavior_sensory', label: t.services.behaviorSensoryTab },
+    { id: 'motor_life', label: t.services.motorLifeTab },
   ];
 
   const filteredServices = activeCategory === 'all'
@@ -58,13 +62,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs sm:text-sm font-semibold">
-            <span>Kompleks Korreksiya Yo‘nalishlari</span>
+            <span>{t.services.badge}</span>
           </div>
           <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight">
-            BIZNING XIZMATLAR
+            {t.services.title}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Har bir bolaning individual rivojlanish xususiyatlarini inobatga olgan holda tashkil etilgan ilmiy va amaliy metodikalar to‘plami.
+            {t.services.subtitle}
           </p>
         </div>
 
@@ -89,6 +93,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredServices.map((service, index) => {
             const isCBO = service.id === 'cbo-kundalik-hayot';
+            const title = language === 'uz' ? service.title : (service.titleRu || service.title);
+            const categoryName = language === 'uz' ? service.categoryName : (service.categoryNameRu || service.categoryName);
+            const shortDesc = language === 'uz' ? service.shortDesc : (service.shortDescRu || service.shortDesc);
+            const highlightTag = language === 'uz' ? service.highlightTag : (service.highlightTagRu || service.highlightTag);
+            const specialBranchNote = language === 'uz' ? service.specialBranchNote : (service.specialBranchNoteRu || service.specialBranchNote);
+            const goals = (language === 'uz' ? service.goals : (service.goalsRu || service.goals)) || [];
+
             return (
               <div
                 key={service.id}
@@ -106,41 +117,41 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
                     </div>
 
                     <div className="flex flex-col items-end gap-1">
-                      {service.highlightTag && (
+                      {highlightTag && (
                         <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${
                           isCBO 
                             ? 'bg-fuchsia-100 text-fuchsia-800 border border-fuchsia-200' 
                             : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                         }`}>
-                          {service.highlightTag}
+                          {highlightTag}
                         </span>
                       )}
                       <span className="text-[10px] font-medium text-slate-600">
-                        {service.categoryName}
+                        {categoryName}
                       </span>
                     </div>
                   </div>
 
                   {/* Title & Short Description */}
                   <h3 className="font-heading font-bold text-slate-900 text-lg sm:text-xl mb-2 group-hover:text-emerald-700 transition-colors">
-                    {index + 1}. {service.title}
+                    {index + 1}. {title}
                   </h3>
 
                   <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
-                    {service.shortDesc}
+                    {shortDesc}
                   </p>
 
                   {/* Special constraint note for CBO room */}
-                  {service.specialBranchNote && (
+                  {specialBranchNote && (
                     <div className="mb-4 p-3 rounded-xl bg-fuchsia-50 border border-fuchsia-200/80 text-[11px] font-semibold text-fuchsia-900 flex items-start space-x-2">
                       <MapPin className="w-4 h-4 text-fuchsia-700 shrink-0 mt-0.5" />
-                      <span>{service.specialBranchNote}</span>
+                      <span>{specialBranchNote}</span>
                     </div>
                   )}
 
                   {/* Key Goals List */}
                   <div className="space-y-2 mb-4">
-                    {service.goals.slice(0, 3).map((goal, gIdx) => (
+                    {goals.slice(0, 3).map((goal, gIdx) => (
                       <div key={gIdx} className="flex items-start space-x-2 text-xs text-slate-700">
                         <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                         <span>{goal}</span>
@@ -156,14 +167,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
                     className="text-xs font-bold text-slate-700 hover:text-emerald-700 flex items-center py-1"
                   >
                     <Info className="w-3.5 h-3.5 mr-1 text-slate-400" />
-                    Batafsil ma’lumot
+                    {language === 'uz' ? 'Batafsil ma’lumot' : 'Подробнее'}
                   </button>
 
                   <button
-                    onClick={() => onOpenConsultationModal(isCBO ? 'qoshkopir' : undefined, service.title)}
+                    onClick={() => onOpenConsultationModal(isCBO ? 'qoshkopir' : undefined, title)}
                     className="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-semibold shadow-xs transition-colors"
                   >
-                    <span>Yozilish</span>
+                    <span>{language === 'uz' ? 'Yozilish' : 'Записаться'}</span>
                     <ChevronRight className="w-3.5 h-3.5 ml-1" />
                   </button>
                 </div>
@@ -186,10 +197,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
                 </div>
                 <div>
                   <h3 className="font-heading font-bold text-slate-900 text-lg sm:text-xl">
-                    {selectedServiceForModal.title}
+                    {language === 'uz' ? selectedServiceForModal.title : (selectedServiceForModal.titleRu || selectedServiceForModal.title)}
                   </h3>
                   <span className="text-xs text-emerald-800 font-medium">
-                    {selectedServiceForModal.categoryName}
+                    {language === 'uz' ? selectedServiceForModal.categoryName : (selectedServiceForModal.categoryNameRu || selectedServiceForModal.categoryName)}
                   </span>
                 </div>
               </div>
@@ -202,28 +213,28 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
             </div>
 
             <div className="py-4 space-y-4 max-h-[60vh] overflow-y-auto pr-1">
-              {selectedServiceForModal.specialBranchNote && (
+              {(language === 'uz' ? selectedServiceForModal.specialBranchNote : (selectedServiceForModal.specialBranchNoteRu || selectedServiceForModal.specialBranchNote)) && (
                 <div className="p-3 rounded-xl bg-fuchsia-50 border border-fuchsia-200 text-xs font-bold text-fuchsia-900 flex items-center space-x-2">
                   <MapPin className="w-4 h-4 text-fuchsia-600 shrink-0" />
-                  <span>{selectedServiceForModal.specialBranchNote}</span>
+                  <span>{language === 'uz' ? selectedServiceForModal.specialBranchNote : (selectedServiceForModal.specialBranchNoteRu || selectedServiceForModal.specialBranchNote)}</span>
                 </div>
               )}
 
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
-                  Yo‘nalish haqida:
+                  {language === 'uz' ? 'Yo‘nalish haqida:' : 'О направлении:'}
                 </h4>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  {selectedServiceForModal.fullDesc}
+                  {language === 'uz' ? selectedServiceForModal.fullDesc : (selectedServiceForModal.fullDescRu || selectedServiceForModal.fullDesc)}
                 </p>
               </div>
 
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                  Asosiy maqsad va natijalar:
+                  {t.services.goalsTitle}
                 </h4>
                 <div className="space-y-2">
-                  {selectedServiceForModal.goals.map((g, idx) => (
+                  {(language === 'uz' ? selectedServiceForModal.goals : (selectedServiceForModal.goalsRu || selectedServiceForModal.goals)).map((g, idx) => (
                     <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
                       <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                       <span>{g}</span>
@@ -234,10 +245,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
 
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
-                  Kimlar uchun mo‘ljallangan:
+                  {t.services.forWhomTitle}
                 </h4>
                 <p className="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                  {selectedServiceForModal.forWhom}
+                  {language === 'uz' ? selectedServiceForModal.forWhom : (selectedServiceForModal.forWhomRu || selectedServiceForModal.forWhom)}
                 </p>
               </div>
             </div>
@@ -247,17 +258,20 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
                 onClick={() => setSelectedServiceForModal(null)}
                 className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100"
               >
-                Yopish
+                {t.modals.closeBtn}
               </button>
               <button
                 onClick={() => {
                   const service = selectedServiceForModal;
                   setSelectedServiceForModal(null);
-                  onOpenConsultationModal(service.id === 'cbo-kundalik-hayot' ? 'qoshkopir' : undefined, service.title);
+                  onOpenConsultationModal(
+                    service.id === 'cbo-kundalik-hayot' ? 'qoshkopir' : undefined, 
+                    language === 'uz' ? service.title : (service.titleRu || service.title)
+                  );
                 }}
                 className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-600/20"
               >
-                Konsultatsiyaga yozilish
+                {t.services.enrollServiceBtn}
               </button>
             </div>
 

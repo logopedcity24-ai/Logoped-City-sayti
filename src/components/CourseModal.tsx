@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Course } from '../types';
-import { X, GraduationCap, Clock, Award, CheckCircle2, User, Phone } from 'lucide-react';
+import { X, GraduationCap, CheckCircle2, User, Phone } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 
 interface CourseModalProps {
   course: Course | null;
@@ -13,8 +15,15 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
   const [experience, setExperience] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language];
 
   if (!course) return null;
+
+  const title = language === 'uz' ? course.title : (course.titleRu || course.title);
+  const targetAudience = language === 'uz' ? course.targetAudience : (course.targetAudienceRu || course.targetAudience);
+  const duration = language === 'uz' ? course.duration : (course.durationRu || course.duration);
+  const format = language === 'uz' ? course.format : (course.formatRu || course.format);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +40,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
     setSubmitted(false);
     setName('');
     setPhone('');
+    setExperience('');
     onClose();
   };
 
@@ -52,18 +62,22 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
             </div>
             
             <h3 className="font-heading font-extrabold text-2xl text-slate-900">
-              Arizangiz Qabul Qilindi!
+              {language === 'uz' ? 'Arizangiz Qabul Qilindi!' : 'Заявка принята!'}
             </h3>
             
             <p className="text-sm text-slate-600 leading-relaxed">
-              Rahmat, <strong>{name}</strong>! Siz <strong>"{course.title}"</strong> kursiga muvaffaqiyatli ro‘yxatdan o‘tdingiz. Tez orada o‘quv bo‘limi koordinatori siz bilan bog‘lanadi.
+              {language === 'uz' ? (
+                <>Rahmat, <strong>{name}</strong>! Siz <strong>"{title}"</strong> kursiga muvaffaqiyatli ro‘yxatdan o‘tdingiz. Tez orada o‘quv bo‘limi koordinatori siz bilan bog‘lanadi.</>
+              ) : (
+                <>Спасибо, <strong>{name}</strong>! Вы успешно записались на курс <strong>"{title}"</strong>. Координатор учебного отдела свяжется с вами в ближайшее время.</>
+              )}
             </p>
 
             <button
               onClick={handleClose}
               className="w-full py-3 rounded-xl bg-slate-900 hover:bg-fuchsia-700 text-white text-xs font-bold transition-colors"
             >
-              Tushunarli
+              {language === 'uz' ? 'Tushunarli' : 'Понятно'}
             </button>
           </div>
         ) : (
@@ -71,31 +85,31 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
             <div className="pr-8">
               <div className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-fuchsia-50 text-fuchsia-800 text-[11px] font-semibold mb-1">
                 <GraduationCap className="w-3 h-3 text-fuchsia-600" />
-                <span>O‘quv kursi ro‘yxati</span>
+                <span>{t.modals.courseModalTitle}</span>
               </div>
               <h3 className="font-heading font-bold text-xl text-slate-900">
-                {course.title}
+                {title}
               </h3>
               <p className="text-xs text-slate-500 mt-1">
-                Davomiyligi: {course.duration} | {course.format}
+                {t.courses.durationLabel} {duration} | {format}
               </p>
             </div>
 
             <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 space-y-1">
-              <div className="font-semibold text-slate-900">Kimlar uchun:</div>
-              <div>{course.targetAudience}</div>
+              <div className="font-semibold text-slate-900">{t.courses.targetLabel}</div>
+              <div>{targetAudience}</div>
             </div>
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                Ism va familiyangiz <span className="text-rose-500">*</span>
+                {t.contact.parentNameLabel} <span className="text-rose-500">*</span>
               </label>
               <div className="relative">
                 <User className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   required
-                  placeholder="Ismingiz"
+                  placeholder={t.contact.parentNamePlaceholder}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:ring-2 focus:ring-fuchsia-500 focus:bg-white"
@@ -105,7 +119,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                Telefon raqamingiz <span className="text-rose-500">*</span>
+                {t.contact.phoneLabel} <span className="text-rose-500">*</span>
               </label>
               <div className="relative">
                 <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -122,11 +136,11 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                Mutaxassislik yoki faoliyat yo‘nalishingiz (ixtiyoriy)
+                {language === 'uz' ? 'Mutaxassislik yoki faoliyat yo‘nalishingiz (ixtiyoriy)' : 'Специальность или сфера деятельности (необязательно)'}
               </label>
               <input
                 type="text"
-                placeholder="Masalan: Logopediya talabasi, tarbiyachi, ota-ona"
+                placeholder={language === 'uz' ? 'Masalan: Talaba, tarbiyachi, ota-ona' : 'Например: Студент, воспитатель, родитель'}
                 value={experience}
                 onChange={(e) => setExperience(e.target.value)}
                 className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:ring-2 focus:ring-fuchsia-500 focus:bg-white"
@@ -141,7 +155,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
               {isSubmitting ? (
                 <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
               ) : (
-                <span>Ro‘yxatdan o‘tishni tasdiqlash</span>
+                <span>{t.modals.sendRequestBtn}</span>
               )}
             </button>
           </form>

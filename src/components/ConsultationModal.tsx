@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { BRANCHES, SERVICES } from '../data/mockData';
+import { BRANCHES } from '../data/mockData';
 import { X, Phone, User, Calendar, MapPin, CheckCircle2, Sparkles } from 'lucide-react';
 import { LogoEmblem } from './Logo';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -14,13 +16,18 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   isOpen,
   onClose,
   defaultBranch = 'urganch',
-  defaultTopic = 'Dastlabki baholash',
+  defaultTopic,
 }) => {
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language];
+
+  const initialTopic = defaultTopic || (language === 'uz' ? 'Dastlabki baholash' : 'Первичная диагностика');
+
   const [parentName, setParentName] = useState('');
   const [phone, setPhone] = useState('');
   const [childAge, setChildAge] = useState('');
   const [branch, setBranch] = useState(defaultBranch);
-  const [topic, setTopic] = useState(defaultTopic);
+  const [topic, setTopic] = useState(initialTopic);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -46,6 +53,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   };
 
   const selectedBranchData = BRANCHES.find(b => b.id === branch) || BRANCHES[0];
+  const branchName = language === 'uz' ? selectedBranchData.name : (selectedBranchData.nameRu || selectedBranchData.name);
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4">
@@ -66,11 +74,15 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             </div>
             
             <h3 className="font-heading font-extrabold text-2xl text-slate-900">
-              Qabulingiz Yozib Olindi!
+              {language === 'uz' ? 'Qabulingiz Yozib Olindi!' : 'Заявка принята!'}
             </h3>
             
             <p className="text-sm text-slate-600 leading-relaxed">
-              Rahmat, <strong>{parentName}</strong>! <strong>{selectedBranchData.name}</strong> mutaxassisimiz tez orada <strong>{phone}</strong> raqamingiz orqali siz bilan bog‘lanadi.
+              {language === 'uz' ? (
+                <>Rahmat, <strong>{parentName}</strong>! <strong>{branchName}</strong> mutaxassisimiz tez orada <strong>{phone}</strong> raqamingiz orqali siz bilan bog‘lanadi.</>
+              ) : (
+                <>Спасибо, <strong>{parentName}</strong>! Специалист филиала <strong>{branchName}</strong> свяжется с вами по номеру <strong>{phone}</strong>.</>
+              )}
             </p>
 
             <div className="pt-2 flex flex-col gap-2">
@@ -79,13 +91,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                 className="w-full py-3 rounded-xl bg-emerald-600 text-white font-bold text-xs flex items-center justify-center space-x-2"
               >
                 <Phone className="w-4 h-4" />
-                <span>To‘g‘ridan-to‘g‘ri qo‘ng‘iroq qilish</span>
+                <span>{language === 'uz' ? 'To‘g‘ridan-to‘g‘ri qo‘ng‘iroq qilish' : 'Позвонить напрямую'}</span>
               </a>
               <button
                 onClick={handleClose}
                 className="w-full py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold"
               >
-                Oynani yopish
+                {language === 'uz' ? 'Oynani yopish' : 'Закрыть окно'}
               </button>
             </div>
           </div>
@@ -98,27 +110,27 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
               <div>
                 <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold mb-0.5">
                   <Sparkles className="w-3 h-3 text-emerald-600" />
-                  <span>Tezkor ro‘yxatdan o‘tish</span>
+                  <span>{t.modals.consultationTitle}</span>
                 </div>
                 <h3 className="font-heading font-extrabold text-xl text-slate-900 leading-tight">
-                  Konsultatsiyaga Yozilish
+                  {t.modals.consultationTitle}
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Ma’lumotlaringizni qoldiring, mutaxassisimiz tezda bog‘lanadi
+                  {language === 'uz' ? 'Ma’lumotlaringizni qoldiring, mutaxassisimiz tezda bog‘lanadi' : 'Оставьте контакты, наш специалист свяжется с вами'}
                 </p>
               </div>
             </div>
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                Ism va familiyangiz <span className="text-rose-500">*</span>
+                {t.contact.parentNameLabel} <span className="text-rose-500">*</span>
               </label>
               <div className="relative">
                 <User className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   required
-                  placeholder="Ismingiz"
+                  placeholder={t.contact.parentNamePlaceholder}
                   value={parentName}
                   onChange={(e) => setParentName(e.target.value)}
                   className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white"
@@ -129,7 +141,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Telefon raqam <span className="text-rose-500">*</span>
+                  {t.contact.phoneLabel} <span className="text-rose-500">*</span>
                 </label>
                 <div className="relative">
                   <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -146,13 +158,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Bolaning yoshi
+                  {t.contact.childAgeLabel}
                 </label>
                 <div className="relative">
                   <Calendar className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
-                    placeholder="Masalan: 3 yosh"
+                    placeholder={t.contact.childAgePlaceholder}
                     value={childAge}
                     onChange={(e) => setChildAge(e.target.value)}
                     className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white"
@@ -163,7 +175,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                Filialni tanlang
+                {t.contact.branchLabel}
               </label>
               <div className="relative">
                 <MapPin className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -172,18 +184,22 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   onChange={(e) => setBranch(e.target.value)}
                   className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 >
-                  {BRANCHES.map(b => (
-                    <option key={b.id} value={b.id}>
-                      {b.name} ({b.landmark}) {b.hasCBO ? '★ CBO Xonasi bilan' : ''}
-                    </option>
-                  ))}
+                  {BRANCHES.map(b => {
+                    const bN = language === 'uz' ? b.name : (b.nameRu || b.name);
+                    const bL = language === 'uz' ? b.landmark : (b.landmarkRu || b.landmark);
+                    return (
+                      <option key={b.id} value={b.id}>
+                        {bN} ({bL}) {b.hasCBO ? (language === 'uz' ? '★ CBO Xonasi bilan' : '★ с комнатой СБО') : ''}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                Yo‘nalish / Mavzu
+                {language === 'uz' ? 'Yo‘nalish / Mavzu' : 'Направление / Тема'}
               </label>
               <input
                 type="text"
@@ -201,7 +217,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
               {isSubmitting ? (
                 <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
               ) : (
-                <span>Murojaatni yuborish</span>
+                <span>{t.modals.sendRequestBtn}</span>
               )}
             </button>
           </form>

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { BRANCHES } from '../data/mockData';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 import { 
   MapPin, 
   Phone, 
   Clock, 
   ExternalLink, 
   CheckCircle2, 
-  Sparkles, 
   Compass, 
   Send, 
   Instagram,
   Navigation
 } from 'lucide-react';
-import { LogoEmblem } from './Logo';
 
 interface BranchesSectionProps {
   onOpenConsultationModal: (branchId?: string) => void;
@@ -20,8 +20,17 @@ interface BranchesSectionProps {
 
 export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsultationModal }) => {
   const [activeBranchId, setActiveBranchId] = useState<string>('urganch');
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language];
 
   const selectedBranch = BRANCHES.find(b => b.id === activeBranchId) || BRANCHES[0];
+
+  const branchName = language === 'uz' ? selectedBranch.name : (selectedBranch.nameRu || selectedBranch.name);
+  const branchCity = language === 'uz' ? selectedBranch.city : (selectedBranch.cityRu || selectedBranch.city);
+  const branchAddress = language === 'uz' ? selectedBranch.address : (selectedBranch.addressRu || selectedBranch.address);
+  const branchLandmark = language === 'uz' ? selectedBranch.landmark : (selectedBranch.landmarkRu || selectedBranch.landmark);
+  const branchWorkHours = language === 'uz' ? selectedBranch.workHours : (selectedBranch.workHoursRu || selectedBranch.workHours);
+  const branchFeatures = (language === 'uz' ? selectedBranch.features : (selectedBranch.featuresRu || selectedBranch.features)) || [];
 
   return (
     <section id="filiallar" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200/60">
@@ -31,13 +40,13 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-900 text-xs sm:text-sm font-semibold">
             <Compass className="w-4 h-4 text-emerald-600" />
-            <span>Xorazm Bo‘ylab 4 Ta Manzil</span>
+            <span>{t.branches.badge}</span>
           </div>
           <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight">
-            FILIALLARIMIZ
+            {t.branches.title}
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Sizga va oilangizga eng qulay bo‘lgan manzilni tanlang. Har bir filialimizda qulaylik va yuqori darajadagi mutaxassislar xizmat ko‘rsatadi.
+            {t.branches.subtitle}
           </p>
         </div>
 
@@ -45,6 +54,9 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10 mb-8 max-w-4xl mx-auto">
           {BRANCHES.map(branch => {
             const isActive = branch.id === activeBranchId;
+            const bName = language === 'uz' ? branch.name : (branch.nameRu || branch.name);
+            const bCity = language === 'uz' ? branch.city : (branch.cityRu || branch.city);
+
             return (
               <button
                 key={branch.id}
@@ -57,14 +69,14 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
               >
                 {branch.hasCBO && (
                   <span className="absolute -top-2.5 right-3 text-[10px] font-black uppercase tracking-wider bg-fuchsia-600 text-white px-2 py-0.5 rounded-full shadow-xs">
-                    CBO xonasi
+                    {t.branches.cboBadge}
                   </span>
                 )}
                 <div className="font-heading font-bold text-slate-900 text-sm sm:text-base mb-1">
-                  {branch.city}
+                  {bCity}
                 </div>
                 <div className="text-xs text-slate-500 line-clamp-1">
-                  {branch.name}
+                  {bName}
                 </div>
               </button>
             );
@@ -80,16 +92,16 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-bold">
-                    {selectedBranch.city}
+                    {branchCity}
                   </span>
                   {selectedBranch.hasCBO && (
                     <span className="px-3 py-1 rounded-lg bg-fuchsia-100 text-fuchsia-800 text-xs font-bold">
-                      ★ Maxsus CBO xonasi bilan jihozlangan
+                      ★ {language === 'uz' ? 'Maxsus CBO xonasi bilan jihozlangan' : 'Оснащен специальной комнатой СБО'}
                     </span>
                   )}
                 </div>
                 <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900">
-                  {selectedBranch.name}
+                  {branchName}
                 </h3>
               </div>
 
@@ -98,31 +110,31 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900 font-semibold">Manzil:</strong>
-                    <span>{selectedBranch.address}</span>
+                    <strong className="block text-slate-900 font-semibold">{t.branches.addressLabel}</strong>
+                    <span>{branchAddress}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
                   <Navigation className="w-5 h-5 text-teal-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900 font-semibold">Mo‘ljal:</strong>
-                    <span>{selectedBranch.landmark}</span>
+                    <strong className="block text-slate-900 font-semibold">{t.branches.landmarkLabel}</strong>
+                    <span>{branchLandmark}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
                   <Clock className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900 font-semibold">Ish vaqti:</strong>
-                    <span>{selectedBranch.workHours}</span>
+                    <strong className="block text-slate-900 font-semibold">{t.branches.workHoursLabel}</strong>
+                    <span>{branchWorkHours}</span>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
                   <Phone className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900 font-semibold">Telefon raqam:</strong>
+                    <strong className="block text-slate-900 font-semibold">{language === 'uz' ? 'Telefon raqam:' : 'Номер телефона:'}</strong>
                     <a
                       href={`tel:${selectedBranch.phoneRaw}`}
                       className="text-emerald-700 font-bold text-base hover:underline"
@@ -136,10 +148,10 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
               {/* Branch Features */}
               <div className="pt-2">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                  Filial imkoniyatlari:
+                  {t.branches.featuresLabel}
                 </h4>
                 <div className="space-y-1.5">
-                  {selectedBranch.features.map((feat, fIdx) => (
+                  {branchFeatures.map((feat, fIdx) => (
                     <div key={fIdx} className="flex items-center space-x-2 text-xs text-slate-700">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
                       <span>{feat}</span>
@@ -154,7 +166,7 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
                   onClick={() => onOpenConsultationModal(selectedBranch.id)}
                   className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-600/20 transition-all"
                 >
-                  Shu filialga yozilish
+                  {t.branches.bookBranchBtn}
                 </button>
 
                 <a
@@ -162,7 +174,7 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
                   className="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm inline-flex items-center transition-colors"
                 >
                   <Phone className="w-4 h-4 mr-2 text-emerald-400" />
-                  Qo‘ng‘iroq qilish
+                  {t.branches.callBranchBtn}
                 </a>
               </div>
             </div>
@@ -171,13 +183,15 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
             <div className="md:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 text-white space-y-5">
               <div className="flex items-center justify-between">
                 <h4 className="font-heading font-bold text-base text-emerald-400">
-                  Xaritada ko‘rish
+                  {language === 'uz' ? 'Xaritada ko‘rish' : 'Посмотреть на карте'}
                 </h4>
                 <Compass className="w-5 h-5 text-slate-400" />
               </div>
 
               <p className="text-xs text-slate-300 leading-relaxed">
-                Manzilni o‘zingizga qulay onlayn xaritalar orqali oching va yo‘nalish (marshrut) chizing:
+                {language === 'uz' 
+                  ? 'Manzilni o‘zingizga qulay onlayn xaritalar orqali oching va yo‘nalish (marshrut) chizing:'
+                  : 'Откройте адрес на онлайн карте и проложите удобный маршрут:'}
               </p>
 
               <div className="space-y-2.5">
@@ -189,7 +203,7 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
                 >
                   <span className="flex items-center">
                     <MapPin className="w-4 h-4 mr-2 text-yellow-400" />
-                    Yandex Xaritalar
+                    {t.branches.yandexMapBtn}
                   </span>
                   <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                 </a>
@@ -202,7 +216,7 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
                 >
                   <span className="flex items-center">
                     <MapPin className="w-4 h-4 mr-2 text-emerald-400" />
-                    Google Maps
+                    {t.branches.googleMapBtn}
                   </span>
                   <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                 </a>
@@ -211,7 +225,7 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
               {/* Social Channels */}
               <div className="pt-3 border-t border-slate-700/80 space-y-2">
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                  Tezkor onlayn aloqa:
+                  {language === 'uz' ? 'Tezkor onlayn aloqa:' : 'Онлайн связь:'}
                 </div>
                 <div className="flex gap-2">
                   <a
@@ -251,14 +265,18 @@ export const BranchesSection: React.FC<BranchesSectionProps> = ({ onOpenConsulta
               className="cursor-pointer p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-emerald-400 transition-all space-y-2 shadow-xs"
             >
               <div className="flex items-center justify-between">
-                <span className="font-heading font-bold text-sm text-slate-900">{b.name}</span>
+                <span className="font-heading font-bold text-sm text-slate-900">
+                  {language === 'uz' ? b.name : (b.nameRu || b.name)}
+                </span>
                 {b.hasCBO && (
                   <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-fuchsia-100 text-fuchsia-800">
                     CBO
                   </span>
                 )}
               </div>
-              <p className="text-xs text-slate-500 line-clamp-1">{b.landmark}</p>
+              <p className="text-xs text-slate-500 line-clamp-1">
+                {language === 'uz' ? b.landmark : (b.landmarkRu || b.landmark)}
+              </p>
               <a
                 href={`tel:${b.phoneRaw}`}
                 className="text-xs font-bold text-emerald-700 flex items-center"

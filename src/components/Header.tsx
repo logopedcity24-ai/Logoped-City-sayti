@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Send, Instagram, Menu, X, Clock, MapPin, Sparkles, ChevronRight } from 'lucide-react';
+import { Phone, Send, Instagram, Menu, X, Clock, MapPin, Sparkles, ChevronRight, Globe } from 'lucide-react';
 import { Logo } from './Logo';
+import { useLanguage } from '../context/LanguageContext';
+import { TRANSLATIONS } from '../data/translations';
 
 interface HeaderProps {
   onOpenConsultationModal: (defaultBranch?: string) => void;
@@ -9,6 +11,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
+  const t = TRANSLATIONS[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,15 +23,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Bosh sahifa', href: '#hero' },
-    { label: 'Holatlar', href: '#holatlar' },
-    { label: 'Xizmatlar', href: '#xizmatlar' },
-    { label: 'Metodika', href: '#metodika' },
-    { label: 'Filiallar', href: '#filiallar' },
-    { label: 'Mutaxassislar', href: '#mutaxassislar' },
-    { label: 'Kurslar', href: '#kurslar' },
-    { label: 'Savol-javob', href: '#faq' },
-    { label: 'Bog‘lanish', href: '#boglanish' },
+    { label: t.nav.services, href: '#xizmatlar' },
+    { label: t.nav.speechTest, href: '#nutq-testi' },
+    { label: t.nav.methodology, href: '#metodika' },
+    { label: t.nav.branches, href: '#filiallar' },
+    { label: t.nav.specialists, href: '#mutaxassislar' },
+    { label: t.nav.courses, href: '#kurslar' },
+    { label: t.nav.reviews, href: '#fikrlar' },
+    { label: t.nav.faq, href: '#faq' },
+    { label: t.nav.contact, href: '#boglanish' },
   ];
 
   return (
@@ -38,15 +42,41 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
           <div className="flex items-center space-x-4">
             <span className="flex items-center text-emerald-400 font-medium">
               <MapPin className="w-3.5 h-3.5 mr-1 text-emerald-400" />
-              Xorazm viloyati: Urganch, Xiva, Qo‘shko‘pir, Xonqa
+              {language === 'uz' ? 'Xorazm viloyati: Urganch, Xiva, Qo‘shko‘pir, Xonqa' : 'Хорезм: Ургенч, Хива, Кошкупыр, Ханка'}
             </span>
             <span className="hidden md:flex items-center text-slate-400">
               <Clock className="w-3.5 h-3.5 mr-1" />
-              Du - Sha: 09:00 - 18:00
+              {language === 'uz' ? 'Du - Sha: 09:00 - 18:00' : 'Пн - Сб: 09:00 - 18:00'}
             </span>
           </div>
 
           <div className="flex items-center space-x-3 ml-auto">
+            {/* Language Switcher in Top Bar */}
+            <div className="flex items-center bg-slate-800 rounded-lg p-0.5 border border-slate-700 mr-1">
+              <button
+                onClick={() => setLanguage('uz')}
+                className={`px-2 py-0.5 rounded-md text-xs font-bold transition-all ${
+                  language === 'uz'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+                title="O‘zbekcha"
+              >
+                O‘Z
+              </button>
+              <button
+                onClick={() => setLanguage('ru')}
+                className={`px-2 py-0.5 rounded-md text-xs font-bold transition-all ${
+                  language === 'ru'
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+                title="Русский"
+              >
+                RU
+              </button>
+            </div>
+
             <a
               href="https://t.me/logoped_city_admin"
               target="_blank"
@@ -97,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
               <a
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-emerald-600 rounded-lg hover:bg-emerald-50/60 transition-colors"
+                className="px-2.5 py-1.5 text-xs xl:text-sm font-medium text-slate-700 hover:text-emerald-600 rounded-lg hover:bg-emerald-50/60 transition-colors"
               >
                 {link.label}
               </a>
@@ -105,13 +135,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
           </div>
 
           {/* Action CTA & Mobile Trigger */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <button
               onClick={() => onOpenConsultationModal()}
-              className="hidden sm:inline-flex items-center justify-center px-4.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md shadow-emerald-600/25 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm shadow-md shadow-emerald-600/25 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
             >
               <Sparkles className="w-4 h-4 mr-1.5 text-emerald-200" />
-              Konsultatsiyaga yozilish
+              {t.nav.bookConsultation}
             </button>
 
             {/* Mobile Menu Toggle Button */}
@@ -127,7 +157,37 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-slate-100 shadow-xl px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="lg:hidden bg-white border-t border-slate-100 shadow-xl px-4 pt-3 pb-6 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+            {/* Language Switcher in Mobile Menu */}
+            <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-xs font-bold text-slate-700 flex items-center">
+                <Globe className="w-4 h-4 mr-1.5 text-emerald-600" />
+                {language === 'uz' ? 'Sayt tili:' : 'Язык сайта:'}
+              </span>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => setLanguage('uz')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+                    language === 'uz'
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-white text-slate-700 border border-slate-200'
+                  }`}
+                >
+                  O‘zbekcha
+                </button>
+                <button
+                  onClick={() => setLanguage('ru')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+                    language === 'ru'
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-white text-slate-700 border border-slate-200'
+                  }`}
+                >
+                  Русский
+                </button>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 gap-1">
               {navLinks.map((link) => (
                 <a
@@ -142,24 +202,23 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
               ))}
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex flex-col gap-2">
+            <div className="pt-2 border-t border-slate-100 space-y-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenConsultationModal();
                 }}
-                className="w-full flex items-center justify-center py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-md shadow-emerald-600/20 transition-all"
+                className="w-full flex items-center justify-center py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 transition-all"
               >
-                <Sparkles className="w-4 h-4 mr-2" />
-                Konsultatsiyaga yozilish
+                <Sparkles className="w-4 h-4 mr-1.5" />
+                {t.nav.bookConsultation}
               </button>
-
               <a
                 href="tel:+998992210006"
-                className="w-full flex items-center justify-center py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm transition-colors"
+                className="w-full flex items-center justify-center py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition-colors"
               >
-                <Phone className="w-4 h-4 mr-2 text-emerald-600" />
-                +998 (99) 221-00-06 ga qo‘ng‘iroq qilish
+                <Phone className="w-3.5 h-3.5 mr-1.5 text-emerald-600" />
+                +998 (99) 221-00-06
               </a>
             </div>
           </div>
