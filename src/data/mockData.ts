@@ -1,4 +1,4 @@
-import { Branch, ServiceItem, MethodologyStep, Specialist, Course, Testimonial, FaqItem, ChildNeedItem, CertificateItem } from '../types';
+import { Branch, ServiceItem, MethodologyStep, Specialist, Course, Testimonial, FaqItem, ChildNeedItem, CertificateItem, TariffPlan } from '../types';
 
 export const BRANCHES: Branch[] = [
   {
@@ -1524,3 +1524,159 @@ export const FAQ_ITEMS: FaqItem[] = [
     category: 'To‘lov'
   }
 ];
+
+export const TARIFF_PLANS: TariffPlan[] = [
+  {
+    id: 'start-3',
+    name: 'START 3',
+    nameRu: 'START 3',
+    schedule: 'Haftada 3 kun',
+    scheduleRu: '3 дня в неделю',
+    lessonsSummary: 'Oyiga 12 ta mashg‘ulot',
+    lessonsSummaryRu: '12 занятий в месяц',
+    price: '1 190 000',
+    priceNumeric: 1190000,
+    period: 'so‘m / oy',
+    periodRu: 'сум / месяц',
+    subtitle: 'Boshlang‘ich pedagogik kurs',
+    subtitleRu: 'Начальный педагогический курс',
+    colorTheme: 'green',
+    features: [
+      '12 ta individual logopedik mashg‘ulot',
+      'Boshlang‘ich diagnostika',
+      'Individual rivojlanish maqsadi',
+      'Oylik natija monitoringi',
+      'Ota-onaga tavsiyalar'
+    ],
+    featuresRu: [
+      '12 индивидуальных логопедических занятий',
+      'Первичная диагностика',
+      'Индивидуальная цель развития',
+      'Ежемесячный мониторинг результатов',
+      'Рекомендации родителям'
+    ],
+    excludedNote: 'Basseyn va ot sporti kirmaydi.',
+    excludedNoteRu: 'Бассейн и конный спорт не включены.'
+  },
+  {
+    id: 'start-6',
+    name: 'START 6',
+    nameRu: 'START 6',
+    schedule: 'Haftada 6 kun',
+    scheduleRu: '6 дней в неделю',
+    lessonsSummary: 'Oyiga 24 ta mashg‘ulot',
+    lessonsSummaryRu: '24 занятия в месяц',
+    price: '2 390 000',
+    priceNumeric: 2390000,
+    period: 'so‘m / oy',
+    periodRu: 'сум / месяц',
+    subtitle: 'Intensiv individual rivojlanish',
+    subtitleRu: 'Интенсивное индивидуальное развитие',
+    colorTheme: 'green',
+    features: [
+      '24 ta individual logopedik mashg‘ulot',
+      'Boshlang‘ich diagnostika',
+      'Individual rivojlanish dasturi',
+      'Oylik natija monitoringi',
+      'Ota-onaga tavsiyalar',
+      'Uy sharoitida bajariladigan mashqlar bo‘yicha tavsiyalar'
+    ],
+    featuresRu: [
+      '24 индивидуальных логопедических занятия',
+      'Первичная диагностика',
+      'Индивидуальная программа развития',
+      'Ежемесячный мониторинг результатов',
+      'Рекомендации родителям',
+      'Рекомендации по домашним упражнениям'
+    ],
+    excludedNote: 'Basseyn va ot sporti kirmaydi.',
+    excludedNoteRu: 'Бассейн и конный спорт не включены.'
+  },
+  {
+    id: 'complex',
+    name: 'COMPLEX',
+    nameRu: 'COMPLEX',
+    badge: 'ENG KO‘P TANLANADI!',
+    badgeRu: 'САМЫЙ ПОПУЛЯРНЫЙ!',
+    isPopular: true,
+    schedule: 'Haftada 6 kun + Sog‘lomlashtirish',
+    scheduleRu: '6 дней в неделю + Оздоровление',
+    lessonsSummary: 'Oyiga 28 ta mashg‘ulot (24 logoped + 2 basseyn + 2 ot sporti)',
+    lessonsSummaryRu: '28 занятий в месяц (24 логопед + 2 бассейн + 2 иппотерапия)',
+    price: '2 990 000',
+    priceNumeric: 2990000,
+    period: 'so‘m / oy',
+    periodRu: 'сум / месяц',
+    subtitle: 'Kompleks rivojlanish dasturi',
+    subtitleRu: 'Программа комплексного развития',
+    colorTheme: 'blue',
+    features: [
+      '24 ta individual logopedik mashg‘ulot',
+      '2 ta basseyn mashg‘uloti',
+      '2 ta ot sporti / ippoterapiya',
+      'Boshlang‘ich diagnostika',
+      'Individual rivojlanish dasturi',
+      'Oylik natija monitoringi',
+      'Mutaxassislararo nazorat',
+      'Uy sharoitida bajariladigan mashqlar bo‘yicha tavsiyalar',
+      'Ota-onaga individual tavsiyalar'
+    ],
+    featuresRu: [
+      '24 индивидуальных логопедических занятия',
+      '2 занятия в бассейне',
+      '2 занятия конным спортом / иппотерапия',
+      'Первичная диагностика',
+      'Индивидуальная программа развития',
+      'Ежемесячный мониторинг результатов',
+      'Междисциплинарный контроль специалистов',
+      'Рекомендации по домашним упражнениям',
+      'Индивидуальные рекомендации родителям'
+    ]
+  },
+  {
+    id: 'premium',
+    name: 'PREMIUM',
+    nameRu: 'PREMIUM',
+    badge: 'FULL DEVELOPMENT',
+    badgeRu: 'FULL DEVELOPMENT',
+    isPremium: true,
+    schedule: 'To‘liq premium kompleks + Transfer',
+    scheduleRu: 'Полный премиум комплекс + Трансфер',
+    lessonsSummary: 'Oyiga 32+ ta mashg‘ulot + Barcha xizmatlar',
+    lessonsSummaryRu: '32+ занятия в месяц + Все услуги',
+    price: '4 990 000',
+    priceNumeric: 4990000,
+    period: 'so‘m / oy',
+    periodRu: 'сум / месяц',
+    subtitle: 'Maksimal rivojlanish va transfer',
+    subtitleRu: 'Максимальное развитие и трансфер',
+    colorTheme: 'purple',
+    features: [
+      '24 ta individual logopedik mashg‘ulot',
+      '4 ta basseyn mashg‘uloti',
+      '4 ta ot sporti / ippoterapiya',
+      'Olib kelish va olib ketish xizmati (Transfer)',
+      'Haftalik rivojlanish monitoringi',
+      'Har oy batafsil rivojlanish hisoboti',
+      'Mutaxassislararo konsilium',
+      'Oyiga 2 marta ota-ona konsultatsiyasi',
+      'Uyda bajariladigan mashqlar bo‘yicha video tavsiyalar',
+      'Ustuvor jadval va qulay vaqt tanlash',
+      'Oyiga 1 ta bonus mashg‘ulot'
+    ],
+    featuresRu: [
+      '24 индивидуальных логопедических занятия',
+      '4 занятия в бассейне',
+      '4 занятия конным спортом / иппотерапия',
+      'Трансфер (привоз и отвоз ребенка)',
+      'Еженедельный мониторинг развития',
+      'Ежемесячный подробный отчет о динамике',
+      'Междисциплинарный консилиум специалистов',
+      '2 раза в месяц консультация родителей',
+      'Видео-рекомендации для домашних занятий',
+      'Приоритетное расписание и выбор времени',
+      '1 бонусное занятие в месяц'
+    ]
+  }
+];
+

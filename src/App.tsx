@@ -7,6 +7,7 @@ import { MethodologySection } from './components/MethodologySection';
 import { BranchesSection } from './components/BranchesSection';
 import { SpecialistsSection } from './components/SpecialistsSection';
 import { CertificatesSection } from './components/CertificatesSection';
+import { TariffsSection } from './components/TariffsSection';
 import { CoursesSection } from './components/CoursesSection';
 import { ReviewsSection } from './components/ReviewsSection';
 import { FaqSection } from './components/FaqSection';
@@ -66,6 +67,9 @@ export default function App() {
 
         {/* 5.1 Diplomas & Certificates */}
         <CertificatesSection onOpenConsultationModal={handleOpenConsultationModal} />
+
+        {/* 5.2 Pricing & Tariffs */}
+        <TariffsSection onOpenConsultationModal={handleOpenConsultationModal} />
 
         {/* 6. Professional Training Courses */}
         <CoursesSection onOpenCourseModal={handleOpenCourseModal} />

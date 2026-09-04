@@ -29,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
     { label: t.nav.branches, href: '#filiallar' },
     { label: t.nav.specialists, href: '#mutaxassislar' },
     { label: t.nav.certificates || 'Sertifikatlar', href: '#sertifikatlar' },
+    { label: t.nav.tariffs || 'Tariflar', href: '#tariflar' },
     { label: t.nav.courses, href: '#kurslar' },
     { label: t.nav.reviews, href: '#fikrlar' },
     { label: t.nav.faq, href: '#faq' },

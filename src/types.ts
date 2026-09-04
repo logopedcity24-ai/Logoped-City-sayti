@@ -160,3 +160,29 @@ export interface ContactFormData {
   serviceInterest: string;
   comment: string;
 }
+
+export interface TariffPlan {
+  id: string;
+  name: string;
+  nameRu?: string;
+  badge?: string;
+  badgeRu?: string;
+  schedule: string;
+  scheduleRu?: string;
+  lessonsSummary: string;
+  lessonsSummaryRu?: string;
+  price: string;
+  priceNumeric: number;
+  period: string;
+  periodRu?: string;
+  subtitle?: string;
+  subtitleRu?: string;
+  features: string[];
+  featuresRu?: string[];
+  excludedNote?: string;
+  excludedNoteRu?: string;
+  colorTheme: 'green' | 'blue' | 'purple';
+  isPopular?: boolean;
+  isPremium?: boolean;
+}
+
