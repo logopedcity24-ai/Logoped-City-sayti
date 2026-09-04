@@ -78,14 +78,15 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ onOpen
     const spec = SPECIALISTS.find(s => s.id === id);
     const count = CERTIFICATES.filter(c => c.specialistId === id).length;
     const certSample = CERTIFICATES.find(c => c.specialistId === id);
+    const isLogopedCity = id === 'spec-logoped-city';
     return {
       id,
-      name: spec ? spec.name : (certSample?.specialistName || id),
-      nameRu: spec ? (spec.nameRu || spec.name) : (certSample?.specialistNameRu || certSample?.specialistName || id),
-      role: spec ? spec.role : (certSample?.specialistRole || ''),
-      roleRu: spec ? (spec.roleRu || spec.role) : (certSample?.specialistRoleRu || certSample?.specialistRole || ''),
+      name: spec ? spec.name : (isLogopedCity ? 'Logoped City O‘quv Kurslari' : (certSample?.specialistName || id)),
+      nameRu: spec ? (spec.nameRu || spec.name) : (isLogopedCity ? 'Учебные курсы Logoped City' : (certSample?.specialistNameRu || certSample?.specialistName || id)),
+      role: spec ? spec.role : (isLogopedCity ? 'Malaka oshirish va defektologiya kursi' : (certSample?.specialistRole || '')),
+      roleRu: spec ? (spec.roleRu || spec.role) : (isLogopedCity ? 'Курсы повышения квалификации' : (certSample?.specialistRoleRu || certSample?.specialistRole || '')),
       count,
-      avatarBg: spec?.avatarBg || 'bg-emerald-100 text-emerald-800',
+      avatarBg: spec?.avatarBg || (isLogopedCity ? 'bg-blue-100 text-blue-800' : 'bg-emerald-100 text-emerald-800'),
       hasDiploma: CERTIFICATES.some(c => c.specialistId === id && c.type === 'diploma')
     };
   });
