@@ -1,4 +1,4 @@
-import { Branch, ServiceItem, MethodologyStep, Specialist, Course, Testimonial, FaqItem, ChildNeedItem } from '../types';
+import { Branch, ServiceItem, MethodologyStep, Specialist, Course, Testimonial, FaqItem, ChildNeedItem, CertificateItem } from '../types';
 
 export const BRANCHES: Branch[] = [
   {
@@ -516,6 +516,141 @@ export const SPECIALISTS: Specialist[] = [
     avatarBg: 'bg-pink-100 text-pink-800',
     gender: 'female',
     photoUrl: '/specialists/dildora-sultonzarova.png'
+  },
+  {
+    id: 'spec-yoqutjon',
+    name: 'Sodiqjonova Yoqutjon',
+    nameRu: 'Садикжанова Ёкуджан',
+    role: 'ABA Terapevt, Logopedik Massaj Mutaxassisi',
+    roleRu: 'АВА-терапевт, специалист по логомассажу',
+    experience: 'Sertifikatlangan amaliyotchi mutaxassis',
+    experienceRu: 'Сертифицированный специалист-практик',
+    education: 'VB-MAPP, Denver modeli va Logomassaj bo‘yicha xalqaro va respublika sertifikatlari',
+    educationRu: 'Квалификация по протоколу VB-MAPP, Денверской модели и логомассажу',
+    branch: 'Logoped City filiali',
+    branchRu: 'Филиал Logoped City',
+    specialization: [
+      'VB-MAPP universal protokoli asosida maqsadli rivojlantirish',
+      'Denver modeli: erta aralashuv va o‘yin ko‘nikmalarini shakllantirish',
+      'Ovoz toni va artikulyatsiya bo‘yicha maxsus logopedik massaj',
+      'Autizm va nutq kechikishida xulq-atvor korreksiyasi'
+    ],
+    specializationRu: [
+      'Развитие на основе универсального протокола VB-MAPP',
+      'Денверская модель: раннее вмешательство и игротерапия',
+      'Логопедический массаж тона голоса и артикуляции',
+      'Коррекция поведения при аутизме и задержках речи'
+    ],
+    avatarBg: 'bg-amber-100 text-amber-800',
+    gender: 'female',
+    certificateCount: 3
+  },
+  {
+    id: 'spec-nodira',
+    name: 'Jumaniyozova Nodira Ismoil qizi',
+    nameRu: 'Жуманиёзова Нодира Исмоил кизи',
+    role: 'Maxsus Pedagog (O‘qituvchi-Logoped)',
+    roleRu: 'Специальный педагог (учитель-логопед)',
+    experience: 'Oliy ma’lumotli davlat attestatsiyasidan o‘tgan mutaxassis',
+    experienceRu: 'Дипломированный специалист с государственной аттестацией',
+    education: 'Nizomiy nomidagi O‘zbekiston Milliy Pedagogika Universiteti (Bakalavr)',
+    educationRu: 'Национальный педагогический университет Узбекистана им. Низами (Бакалавр)',
+    branch: 'Logoped City filiali',
+    branchRu: 'Филиал Logoped City',
+    specialization: [
+      'Maxsus pedagogika (Logopediya) metodikasi',
+      'Nutq tovushlarini to‘g‘ri qo‘yish va fonematik rivojlanish',
+      'Artikulyatsion apparatni faollashtirish',
+      'Maktabga tayyorgarlik va bog‘lanishli nutqni o‘stirish'
+    ],
+    specializationRu: [
+      'Специальная педагогика (Логопедия)',
+      'Постановка звуков и фонематическое развитие',
+      'Активизация артикуляционного аппарата',
+      'Подготовка к школе и развитие связной речи'
+    ],
+    avatarBg: 'bg-indigo-100 text-indigo-800',
+    gender: 'female',
+    certificateCount: 1
+  }
+];
+
+export const CERTIFICATES: CertificateItem[] = [
+  {
+    id: 'cert-jumaniyozova-diplom',
+    specialistId: 'spec-nodira',
+    specialistName: 'Jumaniyozova Nodira Ismoil qizi',
+    specialistNameRu: 'Жуманиёзова Нодира Исмоил кизи',
+    specialistRole: 'Maxsus pedagog (o‘qituvchi-logoped)',
+    specialistRoleRu: 'Специальный педагог (учитель-логопед)',
+    title: 'Oliy ma’lumot to‘g‘risida Davlat Diplomi (Bakalavr)',
+    titleRu: 'Государственный диплом о высшем образовании (Бакалавр)',
+    type: 'diploma',
+    issuer: 'Nizomiy nomidagi O‘zbekiston Milliy Pedagogika Universiteti',
+    issuerRu: 'Национальный педагогический университет Узбекистана имени Низами',
+    issueDate: '2025-yil (Qayd raqami: 2944/2025)',
+    imageUrl: '/certificates/nodira-jumaniyozova-diplom.png',
+    description: 'Maxsus pedagogika (Logopediya) ta’lim yo‘nalishi bo‘yicha Bakalavr darajasi va Maxsus pedagog (o‘qituvchi-logoped) mutaxassislik kvalifikatsiyasi.',
+    descriptionRu: 'Присуждена степень бакалавра по направлению Специальная педагогика (Логопедия) с присвоением квалификации Специальный педагог (учитель-логопед).',
+    badge: 'Oliy Ma’lumot Diplomi',
+    badgeRu: 'Диплом о высшем образовании'
+  },
+  {
+    id: 'cert-sodiqjonova-denver',
+    specialistId: 'spec-yoqutjon',
+    specialistName: 'Sodiqjonova Yoqutjon',
+    specialistNameRu: 'Садикжанова Ёкуджан',
+    specialistRole: 'ABA Terapevt, Logopedik massaj mutaxassisi',
+    specialistRoleRu: 'АВА-терапевт, специалист по логомассажу',
+    title: 'Denver modeli bo‘yicha erta aralashuv va o‘yin ko‘nikmasini shakllantirish',
+    titleRu: 'Раннее вмешательство по Денверской модели и формирование игровых навыков',
+    type: 'certificate',
+    issuer: 'ABA Angel Center (Xulq-atvor tahlilchisi CBA-S Zuhra Shuhratovna)',
+    issuerRu: 'Центр ABA Angel (Аналитик поведения CBA-S Зухра Шухратовна)',
+    issueDate: 'Toshkent shahri',
+    imageUrl: '/certificates/yoqutjon-sodiqjonova-denver.jpg',
+    description: 'Bolalarning ilk yoshidan boshlab o‘yin ko‘nikmalarini shakllantirish va xalqaro Denver modeli orqali erta korreksion aralashuv o‘tkazish sertifikati.',
+    descriptionRu: 'Сертификат по раннему вмешательству на основе международной Денверской модели и формированию игровых навыков у детей раннего возраста.',
+    badge: 'Denver Modeli',
+    badgeRu: 'Денверская модель'
+  },
+  {
+    id: 'cert-sodiqjonova-logomassaj',
+    specialistId: 'spec-yoqutjon',
+    specialistName: 'Sodiqjonova Yoqutjon',
+    specialistNameRu: 'Садикжанова Ёкуджан',
+    specialistRole: 'ABA Terapevt, Logopedik massaj mutaxassisi',
+    specialistRoleRu: 'АВА-терапевт, специалист по логомассажу',
+    title: 'Ovoz paychalari patologiyasida past va baland tonni korreksiyalovchi Logomassaj',
+    titleRu: 'Логомассаж для коррекции низкого и высокого тона голоса у детей',
+    type: 'certificate',
+    issuer: '«Logopedy Uzbekistana» amaliyot markazi (Azizova S. F., Atamuxamedova Sh. I.)',
+    issuerRu: 'Практикующий центр «Логопеды Узбекистана» (Азизова С. Ф., Атамухамедова Ш. И.)',
+    issueDate: 'Toshkent shahri',
+    imageUrl: '/certificates/yoqutjon-sodiqjonova-logomassaj.jpg',
+    description: 'Bolalarda ovoz apparati muammolarini bartaraf etish, ovoz balandligi va jarangdorligini tiklashda maxsus logomassaj texnikalarini qo‘llash amaliyoti.',
+    descriptionRu: 'Практический сертификат по методике логопедического массажа для коррекции тональности и восстановления функций голосового аппарата.',
+    badge: 'Logomassaj',
+    badgeRu: 'Логомассаж'
+  },
+  {
+    id: 'cert-sodiqjonova-vbmapp',
+    specialistId: 'spec-yoqutjon',
+    specialistName: 'Sodiqjonova Yoqutjon',
+    specialistNameRu: 'Садикжанова Ёкуджан',
+    specialistRole: 'ABA Terapevt, Logopedik massaj mutaxassisi',
+    specialistRoleRu: 'АВА-терапевт, специалист по логомассажу',
+    title: 'VB-MAPP universal protokoliga asoslanib maqsadli ishlash kursi',
+    titleRu: 'Курс целевой работы на основе универсального протокола VB-MAPP',
+    type: 'certificate',
+    issuer: '«Autizm va Mehr» Jamiyati (Rasulov Islom)',
+    issuerRu: 'Общество «Аутизм и Мехр» (Расулов Ислом)',
+    issueDate: 'Toshkent shahri',
+    imageUrl: '/certificates/yoqutjon-sodiqjonova-vbmapp.jpg',
+    description: 'Autizm va nutqida jiddiy to‘siqlari bo‘lgan bolalarda xulq-atvor va muloqot bosqichlarini VB-MAPP xalqaro baholash protokoli orqali rivojlantirish.',
+    descriptionRu: 'Сертификат по применению международного протокола оценки VB-MAPP и проведению целевых программ поведенческой коррекции.',
+    badge: 'VB-MAPP Protokoli',
+    badgeRu: 'Протокол VB-MAPP'
   }
 ];
 

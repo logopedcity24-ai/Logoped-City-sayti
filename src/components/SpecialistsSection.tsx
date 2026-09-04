@@ -1,6 +1,6 @@
 import React from 'react';
 import { SPECIALISTS } from '../data/mockData';
-import { Award, GraduationCap, MapPin, CheckCircle2, UserCheck } from 'lucide-react';
+import { Award, GraduationCap, MapPin, CheckCircle2, UserCheck, FileCheck } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 
@@ -104,8 +104,24 @@ export const SpecialistsSection: React.FC<SpecialistsSectionProps> = ({ onOpenCo
                   </div>
                 </div>
 
+                {/* Certificate link button */}
+                {spec.certificateCount && spec.certificateCount > 0 && (
+                  <div className="pt-3 border-t border-slate-100 mt-3">
+                    <a
+                      href="#sertifikatlar"
+                      onClick={() => {
+                        window.dispatchEvent(new CustomEvent('filter-certificates', { detail: spec.id }));
+                      }}
+                      className="w-full py-2 px-3 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200/80 font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors group/cert"
+                    >
+                      <FileCheck className="w-3.5 h-3.5 text-teal-600 group-hover/cert:scale-110 transition-transform" />
+                      <span>{t.specialists.viewCertificatesBtn} ({spec.certificateCount})</span>
+                    </a>
+                  </div>
+                )}
+
                 {/* Consultation button */}
-                <div className="pt-4 border-t border-slate-100 mt-4">
+                <div className={`pt-3 ${spec.certificateCount ? 'mt-2' : 'border-t border-slate-100 mt-4'}`}>
                   <button
                     onClick={() => onOpenConsultationModal(undefined, spec.name)}
                     className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-bold text-xs transition-colors shadow-xs"

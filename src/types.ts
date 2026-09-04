@@ -75,6 +75,27 @@ export interface Specialist {
   avatarBg: string;
   gender: 'female' | 'male';
   photoUrl?: string;
+  certificateCount?: number;
+}
+
+export interface CertificateItem {
+  id: string;
+  specialistId: string;
+  specialistName: string;
+  specialistNameRu?: string;
+  specialistRole: string;
+  specialistRoleRu?: string;
+  title: string;
+  titleRu?: string;
+  type: 'diploma' | 'certificate';
+  issuer: string;
+  issuerRu?: string;
+  issueDate?: string;
+  imageUrl: string;
+  description?: string;
+  descriptionRu?: string;
+  badge?: string;
+  badgeRu?: string;
 }
 
 export interface Course {
