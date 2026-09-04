@@ -3,6 +3,7 @@ import { Course } from '../types';
 import { X, GraduationCap, CheckCircle2, User, Phone } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
+import { sendTelegramNotification } from '../services/telegram';
 
 interface CourseModalProps {
   course: Course | null;
@@ -25,15 +26,25 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
   const duration = language === 'uz' ? course.duration : (course.durationRu || course.duration);
   const format = language === 'uz' ? course.format : (course.formatRu || course.format);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      await sendTelegramNotification({
+        type: 'course',
+        parentName: name,
+        phone,
+        topicOrService: `Kurs: ${title} (${format})`,
+        experience: experience || 'Keltirilmagan',
+      });
+    } catch (err) {
+      console.error('Failed to notify telegram:', err);
+    } finally {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 500);
+    }
   };
 
   const handleClose = () => {

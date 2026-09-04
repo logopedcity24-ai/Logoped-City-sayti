@@ -4,6 +4,7 @@ import { X, Phone, User, Calendar, MapPin, CheckCircle2, Sparkles } from 'lucide
 import { LogoEmblem } from './Logo';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
+import { sendTelegramNotification } from '../services/telegram';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -46,15 +47,26 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!parentName || !phone) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      await sendTelegramNotification({
+        type: topic.toLowerCase().includes('tarif') ? 'tariff' : 'consultation',
+        parentName,
+        phone,
+        childAge: childAge ? `${childAge} yosh` : undefined,
+        branchName,
+        topicOrService: topic,
+      });
+    } catch (err) {
+      console.error('Failed to notify telegram:', err);
+    } finally {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 500);
+    }
   };
 
   const handleClose = () => {

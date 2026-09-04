@@ -5,6 +5,7 @@ import { Send, Phone, User, Calendar, MapPin, Sparkles, CheckCircle2, ShieldChec
 import { Logo } from './Logo';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
+import { sendTelegramNotification } from '../services/telegram';
 
 export const ContactFormSection: React.FC = () => {
   const { language } = useLanguage();
@@ -22,17 +23,29 @@ export const ContactFormSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.parentName || !formData.phone) {
       return;
     }
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      await sendTelegramNotification({
+        type: 'contact',
+        parentName: formData.parentName,
+        phone: formData.phone,
+        childAge: formData.childAge ? `${formData.childAge} yosh` : undefined,
+        branchName,
+        topicOrService: formData.serviceInterest,
+        comment: formData.comment,
+      });
+    } catch (err) {
+      console.error('Failed to notify telegram:', err);
+    } finally {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 600);
+    }
   };
 
   const selectedBranchData = BRANCHES.find(b => b.id === formData.preferredBranch) || BRANCHES[0];
