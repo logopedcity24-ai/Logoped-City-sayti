@@ -1,5 +1,10 @@
 const TELEGRAM_BOT_TOKEN = '8949553941:AAGqY-QlksXv5T4bbRzpGM49S-Y_-jT9hiA';
-const TELEGRAM_CHAT_ID = '7159728200';
+
+// Xabarlar boradigan barcha administratorlar Chat ID ro'yxati
+const TELEGRAM_CHAT_IDS = [
+  '7159728200', // Intizor Xudayberganova
+  '6304747335', // Logoped City admin (@logopedcity_admin)
+];
 
 export interface TelegramLeadData {
   type: 'consultation' | 'tariff' | 'contact' | 'course';
@@ -57,20 +62,30 @@ export async function sendTelegramNotification(data: TelegramLeadData): Promise<
     message += `🌐 *Manba:* Sayt orqali yuborildi`;
 
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text: message,
-        parse_mode: 'Markdown',
-      }),
+    
+    const sendPromises = TELEGRAM_CHAT_IDS.map(async (chatId) => {
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+            parse_mode: 'Markdown',
+          }),
+        });
+        const resData = await response.json();
+        return resData.ok;
+      } catch (err) {
+        console.error(`Failed to send to chatId ${chatId}:`, err);
+        return false;
+      }
     });
 
-    const resData = await response.json();
-    return !!resData.ok;
+    const results = await Promise.all(sendPromises);
+    return results.some(Boolean);
   } catch (error) {
     console.error('Error sending telegram lead:', error);
     return false;
