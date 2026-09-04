@@ -166,7 +166,7 @@ export const TRANSLATIONS = {
       title: 'MUTAXASSISLARIMIZ',
       subtitle: 'Har bir mutaxassisimiz oliy pedagogik-defektologik ma’lumotga va bolalar rivojlanishi sohasida ko‘p yillik amaliy tajribaga ega.',
       mainAreasLabel: 'Asosiy yo‘nalishlari:',
-      bookSpecBtn: 'Konsultatsiyaga yozilish',
+      bookSpecBtn: 'Diagnostikaga yozilish',
       viewCertificatesBtn: 'Diplom va sertifikatlar',
     },
     certificates: {
@@ -343,7 +343,7 @@ export const TRANSLATIONS = {
       title: 'НАШИ СПЕЦИАЛИСТЫ',
       subtitle: 'Все специалисты имеют высшее дефектологическое/педагогическое образование и многолетний практический опыт.',
       mainAreasLabel: 'Основные направления:',
-      bookSpecBtn: 'Записаться на консультацию',
+      bookSpecBtn: 'Записаться на диагностику',
       viewCertificatesBtn: 'Дипломы и сертификаты',
     },
     certificates: {

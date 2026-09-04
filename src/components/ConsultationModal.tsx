@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BRANCHES } from '../data/mockData';
 import { X, Phone, User, Calendar, MapPin, CheckCircle2, Sparkles } from 'lucide-react';
 import { LogoEmblem } from './Logo';
@@ -21,7 +21,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const { language } = useLanguage();
   const t = TRANSLATIONS[language];
 
-  const initialTopic = defaultTopic || (language === 'uz' ? 'Dastlabki baholash' : 'Первичная диагностика');
+  const initialTopic = defaultTopic || (language === 'uz' ? 'Dastlabki baholash va diagnostika' : 'Первичная диагностика');
 
   const [parentName, setParentName] = useState('');
   const [phone, setPhone] = useState('');
@@ -30,6 +30,19 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   const [topic, setTopic] = useState(initialTopic);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      if (defaultTopic) {
+        setTopic(defaultTopic);
+      } else {
+        setTopic(language === 'uz' ? 'Dastlabki baholash va diagnostika' : 'Первичная диагностика');
+      }
+      if (defaultBranch) {
+        setBranch(defaultBranch);
+      }
+    }
+  }, [isOpen, defaultTopic, defaultBranch, language]);
 
   if (!isOpen) return null;
 
@@ -199,12 +212,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                {language === 'uz' ? 'Yo‘nalish / Mavzu' : 'Направление / Тема'}
+                {language === 'uz' ? 'Mutaxassis yoki qabul yo‘nalishi' : 'Специалист или направление приёма'}
               </label>
               <input
                 type="text"
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
+                placeholder={language === 'uz' ? 'Masalan: Ollaberganov Oybek - Sensor integratsiya diagnostikasi' : 'Например: Оллаберганов Ойбек - Диагностика сенсорной интеграции'}
                 className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 focus:ring-2 focus:ring-emerald-500 focus:bg-white"
               />
             </div>

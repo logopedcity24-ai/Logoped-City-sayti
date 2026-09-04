@@ -645,6 +645,34 @@ export const SPECIALISTS: Specialist[] = [
     avatarBg: 'bg-fuchsia-100 text-fuchsia-800',
     gender: 'female',
     photoUrl: '/specialists/qunduz-abdrimova.png'
+  },
+  {
+    id: 'spec-oybek',
+    name: 'Ollaberganov Oybek',
+    nameRu: 'Оллаберганов Ойбек',
+    role: 'Sensor Integratsiya Mutaxassisi, Defektolog',
+    roleRu: 'Специалист по сенсорной интеграции, дефектолог',
+    experience: 'Sertifikatlangan sensor integratsiya mutaxassisi',
+    experienceRu: 'Сертифицированный специалист по сенсорной интеграции',
+    education: 'Neuro Logik markazi («Sensor integratsiya va Autizm» dasturi)',
+    educationRu: 'Центр Neuro Logik («Сенсорная интеграция и аутизм»)',
+    branch: 'Logoped City filiali',
+    branchRu: 'Филиал Logoped City',
+    specialization: [
+      'Sensor integratsiya va taktil-vestibulyar stimulyatsiya',
+      'Autizm (RAS) va giperfaollikda (SDVG) sensor korreksiya',
+      'Propriotseptiv sezgirlik va harakat koordinatsiyasi',
+      'Sensor xonada individual diagnostika va mashg‘ulotlar'
+    ],
+    specializationRu: [
+      'Сенсорная интеграция и тактильно-вестибулярная стимуляция',
+      'Сенсорная коррекция при аутизме (РАС) и СДВГ',
+      'Проприоцептивная чувствительность и координация движений',
+      'Индивидуальная диагностика и занятия в сенсорной комнате'
+    ],
+    avatarBg: 'bg-cyan-100 text-cyan-800',
+    gender: 'male',
+    certificateCount: 1
   }
 ];
 
@@ -1293,11 +1321,11 @@ export const CERTIFICATES: CertificateItem[] = [
   },
   {
     id: 'cert-ollaberganov-sensor',
-    specialistId: 'spec-logoped-city',
+    specialistId: 'spec-oybek',
     specialistName: 'Ollaberganov Oybek',
     specialistNameRu: 'Оллаберганов Ойбек',
-    specialistRole: 'Defektolog-Pedagog',
-    specialistRoleRu: 'Дефектолог-педагог',
+    specialistRole: 'Sensor Integratsiya Mutaxassisi, Defektolog',
+    specialistRoleRu: 'Специалист по сенсорной интеграции, дефектолог',
     title: 'Sensor integratsiya va Autizm mavzusidagi seminar sertifikati',
     titleRu: 'Сертификат семинара по сенсорной интеграции и аутизму',
     type: 'certificate',

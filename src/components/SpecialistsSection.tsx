@@ -123,7 +123,11 @@ export const SpecialistsSection: React.FC<SpecialistsSectionProps> = ({ onOpenCo
                 {/* Consultation button */}
                 <div className={`pt-3 ${spec.certificateCount ? 'mt-2' : 'border-t border-slate-100 mt-4'}`}>
                   <button
-                    onClick={() => onOpenConsultationModal(undefined, spec.name)}
+                    onClick={() => {
+                      const specDisplayName = language === 'uz' ? spec.name : (spec.nameRu || spec.name);
+                      const topicText = `${specDisplayName} - ${language === 'uz' ? 'Diagnostikaga yozilish' : 'Запись на диагностику'}`;
+                      onOpenConsultationModal(undefined, topicText);
+                    }}
                     className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-bold text-xs transition-colors shadow-xs"
                   >
                     {t.specialists.bookSpecBtn}

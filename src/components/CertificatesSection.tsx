@@ -279,7 +279,10 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ onOpen
                   </button>
 
                   <button
-                    onClick={() => onOpenConsultationModal(undefined, specialistName)}
+                    onClick={() => {
+                      const bookingTopic = `${specialistName} - ${language === 'uz' ? 'Diagnostikaga yozilish' : 'Запись на диагностику'}`;
+                      onOpenConsultationModal(undefined, bookingTopic);
+                    }}
                     className="py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-bold text-xs transition-colors shadow-xs"
                     title={t.specialists.bookSpecBtn}
                   >
@@ -368,8 +371,9 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ onOpen
                 <button
                   onClick={() => {
                     const specName = language === 'uz' ? activeModalCert.specialistName : (activeModalCert.specialistNameRu || activeModalCert.specialistName);
+                    const bookingTopic = `${specName} - ${language === 'uz' ? 'Diagnostikaga yozilish' : 'Запись на диагностику'}`;
                     setActiveModalCert(null);
-                    onOpenConsultationModal(undefined, specName);
+                    onOpenConsultationModal(undefined, bookingTopic);
                   }}
                   className="w-full sm:w-auto px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs transition-colors shadow-md flex items-center justify-center space-x-1.5"
                 >
