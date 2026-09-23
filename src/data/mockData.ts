@@ -36,7 +36,14 @@ export const BRANCHES: Branch[] = [
       'Уголок арт- и музыкотерапии',
       'Просторный и удобный зал ожидания'
     ],
-    imagePlaceholderColor: 'from-emerald-500 to-teal-700'
+    imagePlaceholderColor: 'from-emerald-500 to-teal-700',
+    imageUrl: '/branches/urganch-1.jpg',
+    images: [
+      '/branches/urganch-1.jpg',
+      '/branches/urganch-2.jpg',
+      '/branches/urganch-3.jpg',
+      '/branches/urganch-4.jpg'
+    ]
   },
   {
     id: 'xiva',
@@ -71,7 +78,13 @@ export const BRANCHES: Branch[] = [
       'Дефектологические развивающие пособия',
       'Удобная зона ожидания для родителей'
     ],
-    imagePlaceholderColor: 'from-teal-600 to-emerald-800'
+    imagePlaceholderColor: 'from-teal-600 to-emerald-800',
+    imageUrl: '/branches/xiva-1.jpg',
+    images: [
+      '/branches/xiva-1.jpg',
+      '/branches/xiva-2.jpg',
+      '/branches/xiva-3.jpg'
+    ]
   },
   {
     id: 'qoshkopir',
@@ -108,7 +121,13 @@ export const BRANCHES: Branch[] = [
       'Зал АФК и двигательной коррекции',
       'Практический кабинет АВА-терапии'
     ],
-    imagePlaceholderColor: 'from-fuchsia-600 to-emerald-700'
+    imagePlaceholderColor: 'from-fuchsia-600 to-emerald-700',
+    imageUrl: '/branches/qoshkopir-1.jpg',
+    images: [
+      '/branches/qoshkopir-1.jpg',
+      '/branches/qoshkopir-2.jpg',
+      '/branches/qoshkopir-3.jpg'
+    ]
   },
   {
     id: 'xonqa',
@@ -143,7 +162,13 @@ export const BRANCHES: Branch[] = [
       'Площадка сенсорной интеграции',
       'Логоритмика и игровая терапия'
     ],
-    imagePlaceholderColor: 'from-emerald-600 to-teal-900'
+    imagePlaceholderColor: 'from-emerald-600 to-teal-900',
+    imageUrl: '/branches/xonqa-1.jpg',
+    images: [
+      '/branches/xonqa-1.jpg',
+      '/branches/xonqa-2.jpg',
+      '/branches/xonqa-3.jpg'
+    ]
   }
 ];
 
@@ -442,7 +467,7 @@ export const SPECIALISTS: Specialist[] = [
     avatarBg: 'bg-emerald-100 text-emerald-800',
     gender: 'female',
     photoUrl: '/specialists/aziza-atajanova.png',
-    certificateCount: 11
+    certificateCount: 13
   },
   {
     id: 'spec-shoira',
@@ -530,7 +555,8 @@ export const SPECIALISTS: Specialist[] = [
     ],
     avatarBg: 'bg-amber-100 text-amber-800',
     gender: 'female',
-    certificateCount: 5
+    photoUrl: '/specialists/yoqutjon-sodiqjonova.png',
+    certificateCount: 6
   },
   {
     id: 'spec-dilnura',
@@ -559,7 +585,7 @@ export const SPECIALISTS: Specialist[] = [
     avatarBg: 'bg-emerald-100 text-emerald-800',
     gender: 'female',
     photoUrl: '/specialists/dilnura-olimova.png',
-    certificateCount: 9
+    certificateCount: 10
   },
   {
     id: 'spec-dildora',
@@ -569,8 +595,8 @@ export const SPECIALISTS: Specialist[] = [
     roleRu: 'АВА-терапевт (поведенческий аналитик)',
     experience: 'Malakali sertifikatlangan ABA mutaxassisi',
     experienceRu: 'Квалифицированный сертифицированный АВА-терапевт',
-    education: 'ABA Smart Academy (IBAO) xalqaro sertifikatsiyalangan dasturi',
-    educationRu: 'Международная сертифицированная программа ABA Smart Academy (IBAO)',
+    education: 'ABA Smart Academy (IBAO) xalqaro dasturi, Autizm va Mehr (VB-MAPP va Xulq-atvor) sertifikatlari',
+    educationRu: 'Международная программа ABA Smart Academy (IBAO), сертификаты Autizm va Mehr (VB-MAPP и Поведение)',
     branch: 'Logoped City filiali',
     branchRu: 'Филиал Logoped City',
     specialization: [
@@ -588,7 +614,7 @@ export const SPECIALISTS: Specialist[] = [
     avatarBg: 'bg-pink-100 text-pink-800',
     gender: 'female',
     photoUrl: '/specialists/dildora-sultonzarova.png',
-    certificateCount: 1
+    certificateCount: 4
   },
   {
     id: 'spec-nodira',
@@ -616,6 +642,7 @@ export const SPECIALISTS: Specialist[] = [
     ],
     avatarBg: 'bg-indigo-100 text-indigo-800',
     gender: 'female',
+    photoUrl: '/specialists/nodira-jumaniyazova.png',
     certificateCount: 5
   },
   {
@@ -644,7 +671,8 @@ export const SPECIALISTS: Specialist[] = [
     ],
     avatarBg: 'bg-fuchsia-100 text-fuchsia-800',
     gender: 'female',
-    photoUrl: '/specialists/qunduz-abdrimova.png'
+    photoUrl: '/specialists/qunduz-abdrimova.png',
+    certificateCount: 4
   },
   {
     id: 'spec-oybek',
@@ -672,12 +700,51 @@ export const SPECIALISTS: Specialist[] = [
     ],
     avatarBg: 'bg-cyan-100 text-cyan-800',
     gender: 'male',
+    photoUrl: '/specialists/oybek-ollaberganov.png',
     certificateCount: 5
   }
 ];
 
 export const CERTIFICATES: CertificateItem[] = [
-  // ==================== ATAJANOVA AZIZA BAXTIYAROVNA (11 ta) ====================
+  // ==================== ATAJANOVA AZIZA BAXTIYAROVNA (13 ta) ====================
+  {
+    id: 'cert-aziza-magistratura-diplom',
+    specialistId: 'spec-aziza',
+    specialistName: 'Atajanova Aziza Baxtiyarovna',
+    specialistNameRu: 'Атаджанова Азиза Бахтияровна',
+    specialistRole: 'Logoped City Kuratori, Defektolog, ABA Terapevt',
+    specialistRoleRu: 'Куратор Logoped City, Дефектолог, АВА-терапевт',
+    title: 'Maxsus (defektologik) ta’lim bo‘yicha Magistr Diplomi (Qizil diplom)',
+    titleRu: 'Диплом магистра с отличием по специальному (дефектологическому) образованию',
+    type: 'diploma',
+    issuer: 'Saratov Milliy Tadqiqot Davlat Universiteti (Rossiya Federatsiyasi)',
+    issuerRu: 'Саратовский национальный исследовательский государственный университет имени Н.Г. Чернышевского',
+    issueDate: '2026-yil 6-mart, Reg. № 26-45-083',
+    imageUrl: '/certificates/aziza-atajanova-magistratura-diplom.jpg',
+    description: 'Maxsus defektologik ta’lim va imkoniyati cheklangan bolalar bilan korreksion-rivojlantiruvchi ishlar bo‘yicha Magistr darajasi berilgan davlat diplomi (Qizil diplom).',
+    descriptionRu: 'Государственный диплом магистра с отличием по направлению Специальное (дефектологическое) образование и коррекционно-развивающая работа с детьми с ОВЗ.',
+    badge: 'Magistr (Qizil diplom)',
+    badgeRu: 'Магистр с отличием'
+  },
+  {
+    id: 'cert-aziza-bakalavr-diplom',
+    specialistId: 'spec-aziza',
+    specialistName: 'Atajanova Aziza Baxtiyarovna',
+    specialistNameRu: 'Атаджанова Азиза Бахтияровна',
+    specialistRole: 'Logoped City Kuratori, Defektolog, ABA Terapevt',
+    specialistRoleRu: 'Куратор Logoped City, Дефектолог, АВА-терапевт',
+    title: 'Defektologiya yo‘nalishi bo‘yicha Oliy ma’lumotli Bakalavr Diplomi',
+    titleRu: 'Диплом бакалавра высшего образования по направлению Дефектология',
+    type: 'diploma',
+    issuer: 'Nizomiy nomidagi Toshkent Davlat Pedagogika Universiteti',
+    issuerRu: 'Ташкентский государственный педагогический университет имени Низами',
+    issueDate: '2017-yil 6-iyun, Toshkent',
+    imageUrl: '/certificates/aziza-atajanova-bakalavr-diplom.jpg',
+    description: 'Nizomiy nomidagi TDPU Defektologiya yo‘nalishi bo‘yicha oliy ma’lumotli bakalavr darajasi va mutaxassisligi berilganligi to‘g‘risidagi davlat diplomi.',
+    descriptionRu: 'Государственный диплом бакалавра ТГПУ имени Низами по направлению Дефектология.',
+    badge: 'Bakalavr Diplomi',
+    badgeRu: 'Диплом бакалавра'
+  },
   {
     id: 'cert-aziza-aba-ertz',
     specialistId: 'spec-aziza',
@@ -1139,7 +1206,26 @@ export const CERTIFICATES: CertificateItem[] = [
     badgeRu: 'Научная публикация'
   },
 
-  // ==================== SODIQJONOVA YOQUTJON (5 ta) ====================
+  // ==================== SODIQJONOVA YOQUTJON (6 ta) ====================
+  {
+    id: 'cert-sodiqjonova-diplom',
+    specialistId: 'spec-yoqutjon',
+    specialistName: 'Sodiqjonova Yoqutjon',
+    specialistNameRu: 'Садикжанова Ёкуджан',
+    specialistRole: 'ABA Terapevt, Sensor & Ergoterapiya Mutaxassisi',
+    specialistRoleRu: 'АВА-терапевт, специалист по сенсорной интеграции',
+    title: 'Defektologiya (Logopediya) yo‘nalishi bo‘yicha Bakalavr Diplomi',
+    titleRu: 'Диплом бакалавра по направлению Дефектология (Логопедия)',
+    type: 'diploma',
+    issuer: 'Ajiniyoz nomidagi Nukus Davlat Pedagogika Instituti',
+    issuerRu: 'Нукусский государственный педагогический институт имени Ажинияза',
+    issueDate: '2025-yil 30-iyun, Reg. № 1185',
+    imageUrl: '/certificates/yoqutjon-sodiqjonova-diplom.jpg',
+    description: 'Defektologiya (Logopediya) mutaxassisligi bo‘yicha Defektolog (Logoped) malakasini tasdiqlovchi rasmiy davlat diplomi.',
+    descriptionRu: 'Государственный диплом бакалавра с присвоением квалификации Дефектолог (Логопед).',
+    badge: 'Davlat Diplomi',
+    badgeRu: 'Гос. диплом'
+  },
   {
     id: 'cert-sodiqjonova-ergoterapiya',
     specialistId: 'spec-yoqutjon',
@@ -1236,7 +1322,64 @@ export const CERTIFICATES: CertificateItem[] = [
     badgeRu: 'Логомассаж'
   },
 
-  // ==================== SULTONZAROVA DILDORA (1 ta) ====================
+  // ==================== SULTONZAROVA DILDORA (4 ta) ====================
+  {
+    id: 'cert-dildora-aba-smart-ibao',
+    specialistId: 'spec-dildora',
+    specialistName: 'Sultonzarova Dildora',
+    specialistNameRu: 'Султонзарова Дилдора',
+    specialistRole: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    specialistRoleRu: 'АВА-терапевт (поведенческий аналитик)',
+    title: 'ABA Amaliy xulq-atvor tahlili xalqaro sertifikatsiyalangan dasturi (IBAO)',
+    titleRu: 'Сертификационная программа по прикладному анализу поведения (АВА) IBAO',
+    type: 'certificate',
+    issuer: 'ABA Smart Academy & IBAO (Sertifikat № 433)',
+    issuerRu: 'ABA Smart Academy & IBAO (Сертификат № 433)',
+    issueDate: '72 o‘quv soati, 02-09 avgust 2025, Toshkent',
+    imageUrl: '/certificates/dildora-sultonnazirova-aba-smart-ibao.jpg',
+    description: 'Amaliy xulq-atvor tahlili bo‘yicha 1-modulni muvaffaqiyatli tamomlaganlik to‘g‘risidagi IBAO xalqaro akkreditatsiyasidan o‘tgan rasmiy sertifikat.',
+    descriptionRu: 'Официальный сертификат с международной аккредитацией IBAO об успешном окончании очного модуля программы АВА (72 часа).',
+    badge: 'ABA Terapiya (IBAO)',
+    badgeRu: 'АВА-терапия (IBAO)'
+  },
+  {
+    id: 'cert-dildora-vb-mapp',
+    specialistId: 'spec-dildora',
+    specialistName: 'Sultonzarova Dildora',
+    specialistNameRu: 'Султонзарова Дилдора',
+    specialistRole: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    specialistRoleRu: 'АВА-терапевт (поведенческий аналитик)',
+    title: 'VB-MAPP universal protokoliga asoslanib maqsadli ishlash kursi',
+    titleRu: 'Курс целевой работы на основе универсального протокола VB-MAPP',
+    type: 'certificate',
+    issuer: '«Autizm va Mehr» Toshkent shahar mas’uliyati cheklangan jamiyati',
+    issuerRu: 'ООО «Autizm va Mehr», г. Ташкент',
+    issueDate: '27.06.2024, Toshkent',
+    imageUrl: '/certificates/dildora-sultonnazirova-vb-mapp.jpg',
+    description: 'VB-MAPP nutq va xulq-atvor baholash universal protokoli bo‘yicha maqsadli korreksion dasturlar tuzish kursi ishtirokchisi.',
+    descriptionRu: 'Сертификат участника курса по составлению целевых коррекционных программ на основе протокола VB-MAPP.',
+    badge: 'VB-MAPP Protokoli',
+    badgeRu: 'Протокол VB-MAPP'
+  },
+  {
+    id: 'cert-dildora-xulq-atvor',
+    specialistId: 'spec-dildora',
+    specialistName: 'Sultonzarova Dildora',
+    specialistNameRu: 'Султонзарова Дилдора',
+    specialistRole: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    specialistRoleRu: 'АВА-терапевт (поведенческий аналитик)',
+    title: 'Problematik xulq-atvor bilan ishlash va hamkorlik yaratish seminari',
+    titleRu: 'Семинар по работе с проблемным поведением и формированию сотрудничества',
+    type: 'certificate',
+    issuer: '«Autizm va Mehr» Toshkent shahar mas’uliyati cheklangan jamiyati',
+    issuerRu: 'ООО «Autizm va Mehr», г. Ташкент',
+    issueDate: '01.03.2025, Toshkent',
+    imageUrl: '/certificates/dildora-sultonnazirova-xulq-atvor.jpg',
+    description: 'Bolalardagi nomaqbul xatti-harakatlarni tahlil qilish, korreksiyalash va ijobiy hamkorlik ko‘nikmalarini o‘rnatish bo‘yicha maxsus seminar.',
+    descriptionRu: 'Специальный семинар по анализу и коррекции нежелательного поведения и развитию учебного сотрудничества.',
+    badge: 'Xulq-atvor Korreksiyasi',
+    badgeRu: 'Коррекция поведения'
+  },
   {
     id: 'cert-dildora-aba-smart',
     specialistId: 'spec-dildora',
@@ -1257,7 +1400,26 @@ export const CERTIFICATES: CertificateItem[] = [
     badgeRu: 'ABA Smart (IBAO)'
   },
 
-  // ==================== OLIMOVA DILNURA (9 ta) ====================
+  // ==================== OLIMOVA DILNURA (10 ta) ====================
+  {
+    id: 'cert-dilnura-tualet-trening',
+    specialistId: 'spec-dilnura',
+    specialistName: 'Olimova Dilnura Raximberganovna',
+    specialistNameRu: 'Олимова Дилнура Рахимбергановна',
+    specialistRole: 'Defektolog-Logoped',
+    specialistRoleRu: 'Дефектолог-логопед',
+    title: 'Bolalarda mustaqil gigiyena: Tualet treningi maxsus amaliy kursi',
+    titleRu: 'Специальный тренинг по туалетному навыку у детей',
+    type: 'certificate',
+    issuer: 'Logoped City Bolalar Rivojlanish Markazi (Atadjanova Aziza)',
+    issuerRu: 'Детский развивающий центр Logoped City (Атаджанова Азиза)',
+    issueDate: 'Logoped City, Xorazm',
+    imageUrl: '/certificates/dilnura-olimova-tualet-trening.jpg',
+    description: 'Rivojlanishida o‘ziga xosligi bo‘lgan bolalarda kundalik hayotiy va gigiyenik ko‘nikmalarni shakllantirish bo‘yicha 2 soatlik maxsus trening.',
+    descriptionRu: 'Сертификат об успешном прохождении практического тренинга по формированию жизненно важных навыков самообслуживания и гигиены.',
+    badge: 'Amaliy Trening',
+    badgeRu: 'Практический тренинг'
+  },
   {
     id: 'cert-dilnura-diplom',
     specialistId: 'spec-dilnura',
@@ -1698,6 +1860,84 @@ export const CERTIFICATES: CertificateItem[] = [
     descriptionRu: 'Сертификат об успешном окончании 72-часового курса начальной логопедии в учебном центре Logoped City.',
     badge: 'Logopediya 1-modul',
     badgeRu: 'Логопедия 1-модуль'
+  },
+
+  // ==================== ABDRIMOVA QUNDUZ (4 ta) ====================
+  {
+    id: 'cert-qunduz-aba-smart-ibao',
+    specialistId: 'spec-qunduz',
+    specialistName: 'Abdrimova Qunduz',
+    specialistNameRu: 'Абдримова Кундуз',
+    specialistRole: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    specialistRoleRu: 'АВА-терапевт (поведенческий аналитик)',
+    title: 'ABA Amaliy xulq-atvor tahlili xalqaro sertifikatsiyalangan dasturi (IBAO)',
+    titleRu: 'Сертификационная программа обучения по прикладному анализу поведения (АВА) IBAO',
+    type: 'certificate',
+    issuer: 'ABA Smart Academy & IBAO (Sertifikat № 423)',
+    issuerRu: 'ABA Smart Academy & IBAO (Сертификат № 423)',
+    issueDate: '72 o‘quv soati, 02-09 avgust 2025, Toshkent',
+    imageUrl: '/certificates/qunduz-abdrimova-aba-smart-ibao.jpg',
+    description: 'IBAO xalqaro xatti-harakat tahlilchilari tashkiloti tomonidan akkreditatsiyalangan amaliy kursni muvaffaqiyatli tamomlaganlik sertifikati.',
+    descriptionRu: 'Международный сертификат IBAO об успешном окончании очного модуля сертификационной программы прикладного анализа поведения (72 часа).',
+    badge: 'ABA Terapiya (IBAO)',
+    badgeRu: 'АВА-терапия (IBAO)'
+  },
+  {
+    id: 'cert-qunduz-sensor-autizm',
+    specialistId: 'spec-qunduz',
+    specialistName: 'Abdrimova Qunduz',
+    specialistNameRu: 'Абдримова Кундуз',
+    specialistRole: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    specialistRoleRu: 'АВА-терапевт (поведенческий аналитик)',
+    title: '«Sensor integratsiya va Autizm» nazariy va amaliy seminari',
+    titleRu: 'Теоретический и практический семинар «Сенсорная интеграция и аутизм»',
+    type: 'certificate',
+    issuer: 'Neuro Logik Center',
+    issuerRu: 'Центр Neuro Logik',
+    issueDate: '08.05.2024, Toshkent',
+    imageUrl: '/certificates/qunduz-abdrimova-sensor-autizm.jpg',
+    description: 'Autizm spektri buzilishi bo‘lgan bolalarda hissiy idrok va sensor integratsiya korreksiyasi bo‘yicha nazariy va amaliy seminar.',
+    descriptionRu: 'Сертификат об освоении теоретических и практических знаний по сенсорной интеграции и коррекции аутизма.',
+    badge: 'Sensor & Autizm',
+    badgeRu: 'Сенсорика и Аутизм'
+  },
+  {
+    id: 'cert-qunduz-nurafshon',
+    specialistId: 'spec-qunduz',
+    specialistName: 'Abdrimova Qunduz',
+    specialistNameRu: 'Абдримова Кундуз',
+    specialistRole: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    specialistRoleRu: 'АВА-терапевт (поведенческий аналитик)',
+    title: 'Imkoniyati cheklangan bolalarni hayotga moslashtirish va nutqni rivojlantirish',
+    titleRu: 'Адаптация детей с ОВЗ к жизни и развитие речи',
+    type: 'certificate',
+    issuer: '«Nurafshon» o‘quv markazi',
+    issuerRu: 'Учебный центр «Нурафшон»',
+    issueDate: '2025-yil 5-aprel',
+    imageUrl: '/certificates/qunduz-abdrimova-nurafshon.jpg',
+    description: 'Imkoniyati cheklangan bolalarni ijtimoiy hayotga moslashtirish va nutqiy faollikni oshirishda Nurafshon metodikasi seminari.',
+    descriptionRu: 'Сертификат участия в семинаре по методикам адаптации детей с ОВЗ и развитию речевых навыков.',
+    badge: 'Moslashtirish & Nutq',
+    badgeRu: 'Адаптация и речь'
+  },
+  {
+    id: 'cert-qunduz-aba-smart-1',
+    specialistId: 'spec-qunduz',
+    specialistName: 'Abdrimova Qunduz',
+    specialistNameRu: 'Абдримова Кундуз',
+    specialistRole: 'ABA Terapevt (Xulq-atvor tahlilchisi)',
+    specialistRoleRu: 'АВА-терапевт (поведенческий аналитик)',
+    title: 'Amaliy xulq-atvor tahlili (ABA) bazaviy kursi 1-moduli',
+    titleRu: '1-й очный модуль сертификационной программы обучения АВА',
+    type: 'certificate',
+    issuer: 'ABA Smart Academy',
+    issuerRu: 'ABA Smart Academy',
+    issueDate: '72 soat, 15-22 fevral 2025, Toshkent',
+    imageUrl: '/certificates/qunduz-abdrimova-aba-smart-1.jpg',
+    description: 'Amaliy xulq-atvor tahlilining bazaviy tamoyillari va korreksion usullari bo‘yicha 72 soatlik intensiv o‘quv kursi.',
+    descriptionRu: 'Сертификат о прохождении 72-часового курса по базовым принципам и методам прикладного анализа поведения.',
+    badge: 'ABA Modul 1',
+    badgeRu: 'АВА Модуль 1'
   },
 
   // ==================== OLLABERGANOV OYBEK (5 ta) ====================

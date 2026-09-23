@@ -22,6 +22,8 @@ export interface Branch {
   features: string[];
   featuresRu?: string[];
   imagePlaceholderColor: string;
+  imageUrl?: string;
+  images?: string[];
 }
 
 export interface ServiceItem {

@@ -161,6 +161,9 @@ export const TRANSLATIONS = {
       yandexMapBtn: 'Yandeks Xarita',
       googleMapBtn: 'Google Xarita',
       bookBranchBtn: 'Ushbu filialga yozilish',
+      galleryTitle: 'Filial sur’atlari va jihozlanishi',
+      viewPhotoBtn: 'Kattalashtirib ko‘rish',
+      allPhotosCount: 'ta rasm',
     },
     specialists: {
       badge: 'Tajribali va Malakali Jamoa',
@@ -363,6 +366,9 @@ export const TRANSLATIONS = {
       yandexMapBtn: 'Яндекс Карты',
       googleMapBtn: 'Google Карты',
       bookBranchBtn: 'Записаться в этот филиал',
+      galleryTitle: 'Фотографии и оснащение филиала',
+      viewPhotoBtn: 'Увеличить фото',
+      allPhotosCount: 'фото',
     },
     specialists: {
       badge: 'Опытная Команда Профессионалов',
