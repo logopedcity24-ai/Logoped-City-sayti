@@ -75,8 +75,11 @@ export const Footer: React.FC<FooterProps> = () => {
               <li><a href="#filiallar" className="hover:text-emerald-400 transition-colors">{t.nav.branches}</a></li>
               <li><a href="#mutaxassislar" className="hover:text-emerald-400 transition-colors">{t.nav.specialists}</a></li>
               <li><a href="#sertifikatlar" className="hover:text-emerald-400 transition-colors">{t.nav.certificates || 'Sertifikatlar'}</a></li>
+              <li><a href="#tariflar" className="hover:text-emerald-400 transition-colors">{t.nav.tariffs || 'Tariflar'}</a></li>
               <li><a href="#kurslar" className="hover:text-emerald-400 transition-colors">{t.nav.courses}</a></li>
+              <li><a href="#fikrlar" className="hover:text-emerald-400 transition-colors">{t.nav.reviews}</a></li>
               <li><a href="#faq" className="hover:text-emerald-400 transition-colors">{t.nav.faq}</a></li>
+              <li><a href="#boglanish" className="hover:text-emerald-400 transition-colors">{t.nav.contact}</a></li>
             </ul>
           </div>
 
