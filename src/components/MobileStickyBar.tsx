@@ -33,12 +33,15 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenConsulta
           <span>Telegram</span>
         </a>
 
-        {/* Book Consultation Modal Button */}
+        {/* Book Consultation Modal Button with 50% discount badge */}
         <button
           onClick={onOpenConsultationModal}
-          className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-slate-900 active:bg-slate-800 text-white font-bold text-[11px] shadow-sm transition-transform active:scale-95"
+          className="relative flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 active:from-emerald-700 active:to-teal-800 text-white font-bold text-[11px] shadow-sm transition-transform active:scale-95"
         >
-          <Sparkles className="w-4 h-4 mb-0.5 text-emerald-400" />
+          <span className="absolute -top-2 right-1 px-1.5 py-0.2 rounded-full bg-amber-400 text-slate-900 font-black text-[9px] shadow-xs">
+            -50%
+          </span>
+          <Sparkles className="w-4 h-4 mb-0.5 text-amber-200" />
           <span>{language === 'uz' ? 'Yozilish' : 'Записаться'}</span>
         </button>
 

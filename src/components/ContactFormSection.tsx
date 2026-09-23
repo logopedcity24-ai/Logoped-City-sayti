@@ -37,7 +37,7 @@ export const ContactFormSection: React.FC = () => {
         phone: formData.phone,
         childAge: formData.childAge ? `${formData.childAge} yosh` : undefined,
         branchName,
-        topicOrService: formData.serviceInterest,
+        topicOrService: `${formData.serviceInterest} (🎁 50% Chegirmada)`,
         comment: formData.comment,
       });
     } catch (err) {
@@ -140,9 +140,9 @@ export const ContactFormSection: React.FC = () => {
                     </h3>
                     <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
                       {language === 'uz' ? (
-                        <>Rahmat, <strong>{formData.parentName}</strong>! Sizning murojaatingiz qabul qilindi. <strong>{branchName}</strong> bo‘yicha mas’ul mutaxassisimiz tez orada <strong>{formData.phone}</strong> raqamingizga qo‘ng‘iroq qiladi.</>
+                        <>Rahmat, <strong>{formData.parentName}</strong>! Sizning murojaatingiz <strong>50% chegirma</strong> bilan qabul qilindi. <strong>{branchName}</strong> bo‘yicha mas’ul mutaxassisimiz tez orada <strong>{formData.phone}</strong> raqamingizga qo‘ng‘iroq qiladi.</>
                       ) : (
-                        <>Спасибо, <strong>{formData.parentName}</strong>! Ваша заявка принята. Специалист филиала <strong>{branchName}</strong> свяжется с вами по номеру <strong>{formData.phone}</strong>.</>
+                        <>Спасибо, <strong>{formData.parentName}</strong>! Ваша заявка со <strong>скидкой 50%</strong> принята. Специалист филиала <strong>{branchName}</strong> свяжется с вами по номеру <strong>{formData.phone}</strong>.</>
                       )}
                     </p>
                   </div>
@@ -189,6 +189,21 @@ export const ContactFormSection: React.FC = () => {
                     <p className="text-xs text-slate-500 mt-1">
                       {language === 'uz' ? 'Barcha maydonlarni to‘ldirib, tugmani bosing' : 'Заполните поля и нажмите кнопку отправки'}
                     </p>
+                  </div>
+
+                  {/* 50% Discount Reminder in Form */}
+                  <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 border border-emerald-300 text-xs text-emerald-950 flex items-center justify-between shadow-xs mb-3">
+                    <div className="flex items-center space-x-2">
+                      <span className="px-2 py-0.5 rounded-lg bg-emerald-600 text-white font-black text-[11px] shrink-0">
+                        -50% CHEGIRMA
+                      </span>
+                      <span className="font-semibold text-slate-800 text-[11px] sm:text-xs">
+                        {language === 'uz'
+                          ? 'Sayt orqali ro‘yxatdan o‘tsangiz, konsultatsiyaga 50% chegirma taqdim etiladi!'
+                          : 'Скидка 50% на консультацию при записи через сайт!'}
+                      </span>
+                    </div>
+                    <Sparkles className="w-4 h-4 text-emerald-600 shrink-0 hidden sm:inline" />
                   </div>
 
                   {/* Parent Name */}

@@ -49,10 +49,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultationModal }) => {
           {/* Left Column: Headline, subtext, actions */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Center Announcement Tag */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-100/90 border border-emerald-200 text-emerald-900 text-xs sm:text-sm font-semibold shadow-xs">
+            {/* Center Announcement Tag with 50% Discount reminder */}
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-emerald-100 via-teal-100 to-amber-100 border border-emerald-300 text-emerald-950 text-xs sm:text-sm font-bold shadow-xs">
               <span className="flex h-2 w-2 rounded-full bg-emerald-600 animate-ping"></span>
-              <span>{t.hero.badge}</span>
+              <span className="px-1.5 py-0.5 rounded-md bg-emerald-700 text-white text-[10px] font-black uppercase tracking-wide">
+                -50% Chegirma
+              </span>
+              <span>
+                {language === 'uz'
+                  ? 'Sayt orqali yozilsangiz — konsultatsiyaga 50% chegirma!'
+                  : 'При записи через сайт — скидка 50% на консультацию!'}
+              </span>
             </div>
 
             {/* Main Headline */}

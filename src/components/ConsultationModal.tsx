@@ -59,7 +59,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
         phone,
         childAge: childAge ? `${childAge} yosh` : undefined,
         branchName,
-        topicOrService: topic,
+        topicOrService: topic.toLowerCase().includes('tarif') ? topic : `${topic} (🎁 50% Chegirmada)`,
       });
     } catch (err) {
       console.error('Failed to notify telegram:', err);
@@ -104,9 +104,9 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             
             <p className="text-sm text-slate-600 leading-relaxed">
               {language === 'uz' ? (
-                <>Rahmat, <strong>{parentName}</strong>! <strong>{branchName}</strong> mutaxassisimiz tez orada <strong>{phone}</strong> raqamingiz orqali siz bilan bog‘lanadi.</>
+                <>Rahmat, <strong>{parentName}</strong>! Siz <strong>50% chegirma</strong> bilan konsultatsiyaga muvaffaqiyatli yozildingiz. <strong>{branchName}</strong> mutaxassisimiz tez orada <strong>{phone}</strong> raqamingiz orqali siz bilan bog‘lanadi.</>
               ) : (
-                <>Спасибо, <strong>{parentName}</strong>! Специалист филиала <strong>{branchName}</strong> свяжется с вами по номеру <strong>{phone}</strong>.</>
+                <>Спасибо, <strong>{parentName}</strong>! Вы успешно записались на консультацию со <strong>скидкой 50%</strong>. Специалист филиала <strong>{branchName}</strong> свяжется с вами по номеру <strong>{phone}</strong>.</>
               )}
             </p>
 
@@ -144,6 +144,21 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   {language === 'uz' ? 'Ma’lumotlaringizni qoldiring, mutaxassisimiz tezda bog‘lanadi' : 'Оставьте контакты, наш специалист свяжется с вами'}
                 </p>
               </div>
+            </div>
+
+            {/* 50% Discount Reminder in Modal */}
+            <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 border border-emerald-300 text-xs text-emerald-950 flex items-center justify-between shadow-xs">
+              <div className="flex items-center space-x-2">
+                <span className="px-2 py-0.5 rounded-lg bg-emerald-600 text-white font-black text-[11px] shrink-0">
+                  -50% CHEGIRMA
+                </span>
+                <span className="font-semibold text-slate-800 text-[11px] sm:text-xs">
+                  {language === 'uz'
+                    ? 'Sayt orqali ro‘yxatdan o‘tganingiz uchun konsultatsiyaga 50% chegirma taqdim etiladi!'
+                    : 'Скидка 50% на консультацию при записи через сайт!'}
+                </span>
+              </div>
+              <Sparkles className="w-4 h-4 text-emerald-600 shrink-0 hidden sm:inline" />
             </div>
 
             <div>

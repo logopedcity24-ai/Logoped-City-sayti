@@ -38,6 +38,29 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultationModal }) => {
 
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
+      {/* 50% Discount Persistent Reminder Ribbon */}
+      <div className="bg-gradient-to-r from-emerald-800 via-teal-800 to-emerald-900 text-white text-[11px] sm:text-xs py-1.5 px-4 border-b border-emerald-700/50 shadow-xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center space-x-2 mx-auto sm:mx-0 text-center sm:text-left">
+            <span className="px-1.5 py-0.2 rounded-md bg-amber-400 text-slate-900 font-black text-[10px] tracking-wide uppercase shadow-xs shrink-0">
+              -50% Chegirma
+            </span>
+            <span className="font-semibold text-emerald-50">
+              {language === 'uz'
+                ? 'Sayt orqali ro‘yxatdan o‘tsangiz, konsultatsiyaga 50% chegirma taqdim etiladi!'
+                : 'При записи через сайт действует скидка 50% на консультацию!'}
+            </span>
+          </div>
+          <button
+            onClick={() => onOpenConsultationModal()}
+            className="hidden sm:inline-flex items-center space-x-1 underline hover:text-amber-300 font-bold text-[11px] transition-colors shrink-0"
+          >
+            <span>{language === 'uz' ? 'Chegirma bilan yozilish' : 'Записаться со скидкой'}</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
+
       {/* Top Notification / Quick Contact Bar */}
       <div className="bg-slate-900 text-slate-200 text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
