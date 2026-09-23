@@ -450,8 +450,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Большой практический и кураторский опыт',
     education: 'VB-MAPP va amaliy xulq-atvor tahlili (ABA) bo‘yicha xalqaro mutaxassis',
     educationRu: 'Международный специалист по оценке VB-MAPP и прикладному анализу поведения (АВА)',
-    branch: 'Barcha filiallar kuratori',
-    branchRu: 'Куратор всех филиалов',
+    branch: 'Logoped City Bosh Kuratori',
+    branchRu: 'Главный куратор Logoped City',
     specialization: [
       'VB-MAPP baholash va individual rivojlanish rejasi',
       'Defektologik va nutqiy korreksiya',
@@ -479,8 +479,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Дипломированный специалист с государственной аттестацией',
     education: 'Ajiniyoz nomidagi NDPI Bakalavr diplomi, Loonn Edu ABA va Denver sertifikatlari',
     educationRu: 'Диплом бакалавра НГПИ им. Ажинияза, международные сертификаты АВА и Денверской модели',
-    branch: 'Logoped City filiali',
-    branchRu: 'Филиал Logoped City',
+    branch: 'Logoped City mutaxassisi',
+    branchRu: 'Специалист Logoped City',
     specialization: [
       'Autizm (RAS), ZPR, ZRR korreksiyasi',
       'Alaliya, Afaziya, Dizartriya, Dispraksiya',
@@ -508,8 +508,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Дипломированный специалист с государственной аттестацией',
     education: 'Ajiniyoz nomidagi NDPI Bakalavr diplomi, Sensor integratsiya sertifikatlari',
     educationRu: 'Диплом бакалавра НГПИ им. Ажинияза, сертификаты по сенсорной интеграции',
-    branch: 'Logoped City filiali',
-    branchRu: 'Филиал Logoped City',
+    branch: 'Logoped City mutaxassisi',
+    branchRu: 'Специалист Logoped City',
     specialization: [
       'Duduqlanish, Dislaliya, Alaliya, Rinolaliya',
       'Autizm, ZPR, ZRR tashxisli bolalar korreksiyasi',
@@ -537,8 +537,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Сертифицированный специалист-практик',
     education: 'Ergoterapiya, Sensor integratsiya, VB-MAPP, Denver modeli va Logomassaj bo‘yicha xalqaro sertifikatlar',
     educationRu: 'Международные сертификаты по эрготерапии, сенсорной интеграции, VB-MAPP, Денверской модели и логомассажу',
-    branch: 'Logoped City filiali',
-    branchRu: 'Филиал Logoped City',
+    branch: 'Logoped City mutaxassisi',
+    branchRu: 'Специалист Logoped City',
     specialization: [
       'Ergoterapiya va Sensor integratsiya terapiyasi',
       'VB-MAPP universal protokoli asosida maqsadli rivojlantirish',
@@ -568,8 +568,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Дипломированный дефектолог-логопед, сертифицированный специалист',
     education: 'Navoiy Davlat Universiteti Bakalavr diplomi, Loonn Edu ABA, VB-MAPP va Logoped City sertifikatlari',
     educationRu: 'Диплом бакалавра Навоийского Государственного Университета, сертификаты АВА Loonn Edu, VB-MAPP и Logoped City',
-    branch: 'Logoped City filiali',
-    branchRu: 'Филиал Logoped City',
+    branch: 'Logoped City mutaxassisi',
+    branchRu: 'Специалист Logoped City',
     specialization: [
       'Duduqlanish, Dislaliya, Alaliya, Rinolaliya',
       'Autizm, ZPR, ZRR diagnozli bolalar bilan ishlash',
@@ -597,8 +597,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Квалифицированный сертифицированный АВА-терапевт',
     education: 'ABA Smart Academy (IBAO) xalqaro dasturi, Autizm va Mehr (VB-MAPP va Xulq-atvor) sertifikatlari',
     educationRu: 'Международная программа ABA Smart Academy (IBAO), сертификаты Autizm va Mehr (VB-MAPP и Поведение)',
-    branch: 'Logoped City filiali',
-    branchRu: 'Филиал Logoped City',
+    branch: 'Logoped City mutaxassisi',
+    branchRu: 'Специалист Logoped City',
     specialization: [
       'Autizm (RAS), ZPR tashxislari bo‘yicha ABA terapiya',
       'Nutq va kognitiv rivojlanishda kechikishlarni bartaraf etish',
@@ -626,8 +626,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Дипломированный специалист с государственной аттестацией',
     education: 'Nizomiy nomidagi Toshkent Davlat Pedagogika Universiteti (Bakalavr), Neurologopediya va Logos sertifikatlari',
     educationRu: 'Ташкентский государственный педагогический университет им. Низами (Бакалавр), сертификаты Logos и неврологопедии',
-    branch: 'Logoped City filiali',
-    branchRu: 'Филиал Logoped City',
+    branch: 'Logoped City mutaxassisi',
+    branchRu: 'Специалист Logoped City',
     specialization: [
       'Maxsus pedagogika (Logopediya) metodikasi',
       'Nutq tovushlarini to‘g‘ri qo‘yish va fonematik rivojlanish',
@@ -655,8 +655,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Квалифицированный АВА-специалист',
     education: 'Amaliy xulq-atvor tahlili (ABA) va bolalar rivojlanishi',
     educationRu: 'Прикладной анализ поведения (АВА) и развитие детей',
-    branch: 'Logoped City filiali',
-    branchRu: 'Филиал Logoped City',
+    branch: 'Logoped City mutaxassisi',
+    branchRu: 'Специалист Logoped City',
     specialization: [
       'Autizm, ZPR va RAS tashxisli bolalar bilan ishlash',
       'Nutq va rivojlanishdagi kechikishlarni korreksiya qilish',
@@ -684,8 +684,8 @@ export const SPECIALISTS: Specialist[] = [
     experienceRu: 'Сертифицированный специалист по сенсорной интеграции',
     education: 'Neuro Logik markazi, KLEKS Markazi (Polsha) va LogoStudio sertifikatlari',
     educationRu: 'Центр Neuro Logik, Центр KLEKS (Польша) и сертификаты LogoStudio',
-    branch: 'Logoped City filiali',
-    branchRu: 'Филиал Logoped City',
+    branch: 'Logoped City mutaxassisi',
+    branchRu: 'Специалист Logoped City',
     specialization: [
       'Sensor integratsiya va taktil-vestibulyar stimulyatsiya',
       'Autizm (RAS) va giperfaollikda (SDVG) sensor korreksiya',
@@ -2042,18 +2042,33 @@ export const COURSES: Course[] = [
   {
     id: 'boshlangich-logopediya',
     title: 'Boshlang‘ich Logopediya Asoslari',
+    titleRu: 'Основы начальной логопедии',
     targetAudience: 'Yosh mutaxassislar, bog‘cha tarbiyachilari va yangi boshlovchilar uchun',
+    targetAudienceRu: 'Для начинающих специалистов, воспитателей и логопедов',
     duration: '2 oy (haftada 3 kun, 2 soatdan)',
+    durationRu: '2 месяца (3 дня в неделю, по 2 часа)',
     format: 'Nazariya + Markaz filiallarida jonli amaliyot',
+    formatRu: 'Теория + Живая практика в филиалах центра',
     description: 'Nutq apparati anatomiyasi, asosiy tovush buzilishlari turlari, artikulyatsion gimnastika va oddiy tovushlarni qo‘yish usullari.',
+    descriptionRu: 'Анатомия артикуляционного аппарата, виды речевых нарушений, артикуляционная гимнастика и техники постановки звуков.',
     topics: [
       'Artikulyatsion apparat tuzilishi va tekshirish usullari',
       'Unli va oson undosh tovushlarni to‘g‘ri qo‘yish texnikasi',
       'Artikulyatsion gimnastika mashqlari to‘plami',
       'Mashg‘ulot konspekti tuzish va bolalar bilan dastlabki aloqa'
     ],
+    topicsRu: [
+      'Строение и диагностика артикуляционного аппарата',
+      'Методика постановки гласных и простых согласных звуков',
+      'Комплекс артикуляционной гимнастики',
+      'Составление плана занятий и первый контакт с ребенком'
+    ],
     certificate: true,
-    badge: 'Ommabop kurs'
+    badge: 'QABUL BOSHLANDI • OKTABR 2026',
+    badgeRu: 'ИДЕТ НАБОР • ОКТЯБРЬ 2026',
+    admissionOpen: true,
+    startDate: 'Oktabr oyi (Yangi guruh qabuli boshlandi)',
+    startDateRu: 'Октябрь 2026 (Открыт набор в новую группу)',
   },
   {
     id: 'maxsus-logopediya',
@@ -2105,17 +2120,33 @@ export const COURSES: Course[] = [
   {
     id: 'sensor-integratsiya-kursi',
     title: 'Sensor Integratsiya Metodikasi va Jihozlar Bilan Ishlash',
+    titleRu: 'Методика сенсорной интеграции и работа с оборудованием',
     targetAudience: 'Pedagoglar, AFK instruktorlari va psixologlar',
-    duration: '3 hafta',
+    targetAudienceRu: 'Для педагогов, инструкторов АФК и психологов',
+    duration: '3 hafta (amaliy mashg‘ulotlar)',
+    durationRu: '3 недели (практические занятия)',
     format: 'Sensor integratsiya zallarida amaliy mashg‘ulot',
+    formatRu: 'Практические занятия в залах сенсорной интеграции',
     description: 'Sensor profillarni baholash, vestibulyar, propriotseptiv va taktil tizimlarni to‘g‘ri yuklama bilan rivojlantirish qoidalari.',
+    descriptionRu: 'Оценка сенсорного профиля, работа с вестибулярной, проприоцептивной и тактильной системами с практической нагрузкой.',
     topics: [
       'Sensor tizimlar anatomiyasi va disfunksiya belgilari',
       'Sensor parhez (Sensory Diet) tuzish qoidalari',
       'Maxsus osma jihozlar va burchaklardan xavfsiz foydalanish',
       'Sensor holatning nutq va diqqatga ta’siri'
     ],
-    certificate: true
+    topicsRu: [
+      'Анатомия сенсорных систем и признаки дисфункций',
+      'Правила составления сенсорной диеты (Sensory Diet)',
+      'Безопасное использование подвесного оборудования и сенсорных зон',
+      'Влияние сенсорного состояния на речь и концентрацию внимания'
+    ],
+    certificate: true,
+    badge: 'QABUL BOSHLANDI • OKTABR 2026',
+    badgeRu: 'ИДЕТ НАБОР • ОКТЯБРЬ 2026',
+    admissionOpen: true,
+    startDate: 'Oktabr oyi (Yangi guruh qabuli boshlandi)',
+    startDateRu: 'Октябрь 2026 (Открыт набор в новую группу)',
   },
   {
     id: 'ota-onalar-seminari',

@@ -117,6 +117,9 @@ export interface Course {
   certificate: boolean;
   badge?: string;
   badgeRu?: string;
+  admissionOpen?: boolean;
+  startDate?: string;
+  startDateRu?: string;
 }
 
 export interface Testimonial {

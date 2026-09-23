@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Course } from '../types';
-import { X, GraduationCap, CheckCircle2, User, Phone } from 'lucide-react';
+import { X, GraduationCap, CheckCircle2, User, Phone, Sparkles, Calendar } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 import { sendTelegramNotification } from '../services/telegram';
@@ -25,6 +25,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
   const targetAudience = language === 'uz' ? course.targetAudience : (course.targetAudienceRu || course.targetAudience);
   const duration = language === 'uz' ? course.duration : (course.durationRu || course.duration);
   const format = language === 'uz' ? course.format : (course.formatRu || course.format);
+  const isAdmissionOpen = Boolean(course.admissionOpen);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,11 +33,15 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
 
     setIsSubmitting(true);
     try {
+      const topicText = isAdmissionOpen 
+        ? `🔥 OKTABR GURUHIGA QABUL: ${title} (${format})`
+        : `Kurs: ${title} (${format})`;
+
       await sendTelegramNotification({
         type: 'course',
         parentName: name,
         phone,
-        topicOrService: `Kurs: ${title} (${format})`,
+        topicOrService: topicText,
         experience: experience || 'Keltirilmagan',
       });
     } catch (err) {
@@ -57,7 +62,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative animate-in fade-in zoom-in-95 duration-200">
+      <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 relative animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
         
         <button
           onClick={handleClose}
@@ -68,7 +73,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
 
         {submitted ? (
           <div className="text-center py-6 space-y-4">
-            <div className="w-14 h-14 rounded-full bg-fuchsia-100 text-fuchsia-600 flex items-center justify-center mx-auto">
+            <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
             
@@ -86,7 +91,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
 
             <button
               onClick={handleClose}
-              className="w-full py-3 rounded-xl bg-slate-900 hover:bg-fuchsia-700 text-white text-xs font-bold transition-colors"
+              className="w-full py-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-bold transition-colors"
             >
               {language === 'uz' ? 'Tushunarli' : 'Понятно'}
             </button>
@@ -105,6 +110,24 @@ export const CourseModal: React.FC<CourseModalProps> = ({ course, onClose }) => 
                 {t.courses.durationLabel} {duration} | {format}
               </p>
             </div>
+
+            {/* Admission Open Announcement */}
+            {isAdmissionOpen && (
+              <div className="p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-300 text-xs text-emerald-950 flex items-start space-x-2.5 shadow-xs">
+                <Sparkles className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-emerald-900 flex items-center gap-1.5">
+                    <span>{language === 'uz' ? 'Oktabr oyiga qabul ochiq!' : 'Открыт набор на октябрь!'}</span>
+                    <span className="text-[10px] bg-emerald-600 text-white px-1.5 py-0.5 rounded-md font-semibold">2026</span>
+                  </div>
+                  <p className="text-emerald-800 text-[11px] mt-0.5 leading-relaxed">
+                    {language === 'uz'
+                      ? 'Hozirda oktabr oyida ochiladigan yangi guruhga o‘quvchilar ro‘yxatga olinmoqda. Joylar soni cheklangan, ariza qoldiring va biz siz bilan bog‘lanamiz.'
+                      : 'В настоящее время формируется группа на октябрь. Количество мест ограничено, оставьте заявку для бронирования места.'}
+                  </p>
+                </div>
+              </div>
+            )}
 
             <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 space-y-1">
               <div className="font-semibold text-slate-900">{t.courses.targetLabel}</div>

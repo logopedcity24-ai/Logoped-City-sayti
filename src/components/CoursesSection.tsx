@@ -1,7 +1,7 @@
 import React from 'react';
 import { COURSES } from '../data/mockData';
 import { Course } from '../types';
-import { GraduationCap, Clock, Award, BookOpen, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, Clock, Award, BookOpen, ChevronRight, CheckCircle2, Calendar, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { TRANSLATIONS } from '../data/translations';
 
@@ -41,20 +41,47 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenCourseModa
             const description = language === 'uz' ? course.description : (course.descriptionRu || course.description);
             const topics = (language === 'uz' ? course.topics : (course.topicsRu || course.topics)) || [];
             const badge = language === 'uz' ? course.badge : (course.badgeRu || course.badge);
+            const startDate = language === 'uz' ? course.startDate : (course.startDateRu || course.startDate);
+
+            const isAdmissionOpen = Boolean(course.admissionOpen);
 
             return (
               <div
                 key={course.id}
-                className="bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-fuchsia-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                className={`bg-white rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between ${
+                  isAdmissionOpen
+                    ? 'border-2 border-emerald-500 shadow-xl shadow-emerald-600/10 ring-2 ring-emerald-400/20 relative'
+                    : 'border border-slate-200/80 hover:border-fuchsia-300 hover:shadow-xl'
+                }`}
               >
                 <div>
+                  {/* Top admission notification banner */}
+                  {isAdmissionOpen && (
+                    <div className="mb-4 p-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white flex items-center justify-between text-xs font-bold shadow-md shadow-emerald-600/20">
+                      <span className="flex items-center gap-1.5">
+                        <span className="relative flex h-2.5 w-2.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+                        </span>
+                        <span>{language === 'uz' ? 'Oktabr oyiga qabul boshlandi!' : 'Набор на октябрь открыт!'}</span>
+                      </span>
+                      <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-md font-semibold">
+                        {language === 'uz' ? 'O‘quvchi yig‘ilmoqda' : 'Идет набор'}
+                      </span>
+                    </div>
+                  )}
+
                   {/* Badge & Target audience */}
                   <div className="flex items-start justify-between gap-2 mb-3">
                     <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">
                       {format}
                     </span>
                     {badge && (
-                      <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-fuchsia-100 text-fuchsia-800 border border-fuchsia-200">
+                      <span className={`text-[11px] font-extrabold px-2.5 py-1 rounded-full border ${
+                        isAdmissionOpen 
+                          ? 'bg-emerald-50 text-emerald-800 border-emerald-300' 
+                          : 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200'
+                      }`}>
                         {badge}
                       </span>
                     )}
@@ -67,6 +94,14 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenCourseModa
                   <p className="text-xs text-slate-600 leading-relaxed mb-4">
                     {description}
                   </p>
+
+                  {/* Start Date Banner if specified */}
+                  {startDate && (
+                    <div className="mb-3 flex items-center space-x-2 text-emerald-800 bg-emerald-50/90 p-2.5 rounded-xl border border-emerald-200/70 font-semibold text-xs">
+                      <Calendar className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span><strong>{language === 'uz' ? 'Boshlanish vaqti:' : 'Старт:'}</strong> {startDate}</span>
+                    </div>
+                  )}
 
                   {/* Duration & Audience info */}
                   <div className="space-y-2 py-3 border-y border-slate-100 text-xs text-slate-700">
@@ -94,7 +129,7 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenCourseModa
                     <div className="space-y-1.5">
                       {topics.slice(0, 3).map((topic, tIdx) => (
                         <div key={tIdx} className="flex items-start space-x-2 text-xs text-slate-700">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-fuchsia-500 shrink-0 mt-0.5" />
+                          <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isAdmissionOpen ? 'text-emerald-600' : 'text-fuchsia-500'}`} />
                           <span>{topic}</span>
                         </div>
                       ))}
@@ -106,9 +141,17 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({ onOpenCourseModa
                 <div className="pt-4 border-t border-slate-100 mt-4">
                   <button
                     onClick={() => onOpenCourseModal(course)}
-                    className="w-full py-3 rounded-xl bg-slate-900 hover:bg-fuchsia-700 text-white font-bold text-xs sm:text-sm shadow-md transition-colors flex items-center justify-center space-x-2"
+                    className={`w-full py-3 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center space-x-2 ${
+                      isAdmissionOpen
+                        ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/25 hover:shadow-emerald-600/35 hover:-translate-y-0.5'
+                        : 'bg-slate-900 hover:bg-fuchsia-700 text-white'
+                    }`}
                   >
-                    <span>{language === 'uz' ? 'Kursga ro‘yxatdan o‘tish' : 'Записаться на курс'}</span>
+                    <span>
+                      {isAdmissionOpen 
+                        ? (language === 'uz' ? 'Oktabr guruhiga yozilish' : 'Записаться на октябрь')
+                        : (language === 'uz' ? 'Kursga ro‘yxatdan o‘tish' : 'Записаться на курс')}
+                    </span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
